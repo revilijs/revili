@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "esnext",
+    "moduleResolution": "NodeNext",
+    "jsx": "preserve",
+    "lib": ["ESNext", "DOM"],
+    "outDir": "./dist",
+    "types": ["node"]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.vue",
+    "@vitejs/plugin-vue",
+    "@vitejs/plugin-vue-jsx"
+  ]
+}

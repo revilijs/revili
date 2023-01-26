@@ -1,0 +1,40 @@
+{
+  "name": "recli-shared",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "exports": {
+    "./client": {
+      "types": "./dist/client/index.d.ts",
+      "default": "./dist/client/index.js"
+    },
+    "./node": {
+      "types": "./dist/node/index.d.ts",
+      "default": "./dist/node/index.js"
+    },
+    "./common": {
+      "types": "./dist/common/index.d.ts",
+      "default": "./dist/common/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "package.json"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf dist",
+    "copy": "cpx \"src/**/*.{d.ts,vue,html}\" dist",
+    "eslint": "eslint",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "luanhewei",
+  "license": "ISC",
+  "dependencies": {
+    "cac": "6.7.14",
+    "vite": "3.2.3",
+    "vue": "3.2.45",
+    "vue-router": "^4.1.6"
+  }
+}

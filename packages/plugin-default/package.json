@@ -1,0 +1,27 @@
+{
+  "name": "recli-plugin-default",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/node/index.js",
+  "module": "dist/node/index.js",
+  "types": "dist/node/index.d.ts",
+  "type": "module",
+  "files": [
+    "dist",
+    "package.json"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf dist",
+    "copy": "cpx \"src/**/*.{d.ts,vue,html}\" dist",
+    "eslint": "eslint",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "luanhewei",
+  "license": "ISC",
+  "dependencies": {
+    "recli-shared": "workspace:*",
+    "vue": "3.2.45"
+  }
+}
