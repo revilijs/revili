@@ -9,9 +9,9 @@ import process from 'node:process'
  */
 export const resolveUserConfig = async (cwd = process.cwd()): Promise<Record<string, any>> => {
   const userConfigPath = [
-    path.resolve(cwd, 'recli.config.ts'),
-    path.resolve(cwd, 'recli.config.js'),
-    path.resolve(cwd, 'recli.config.mjs'),
+    path.resolve(cwd, 'vicli.config.ts'),
+    path.resolve(cwd, 'vicli.config.js'),
+    path.resolve(cwd, 'vicli.config.mjs'),
   ].find(item => fs.existsSync(item))
 
   return userConfigPath ? (await import(userConfigPath)).default : {}

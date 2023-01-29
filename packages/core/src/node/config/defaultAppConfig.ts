@@ -1,8 +1,8 @@
 /** @format */
 
-import type {AppOptions} from 'recli-shared/common'
+import type {AppOptions} from 'vicli-shared/common'
 
 export const defaultAppConfig: AppOptions = {
   layoutOptions: [],
-  plugins: ['recli-plugin-default'],
+  plugins: ['vicli-plugin-default'],
 }

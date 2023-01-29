@@ -1,5 +1,5 @@
 {
-  "name": "recli-plugin-default",
+  "name": "vicli-plugin-default",
   "version": "1.0.0",
   "description": "",
   "main": "dist/node/index.js",
@@ -21,7 +21,7 @@
   "author": "luanhewei",
   "license": "ISC",
   "dependencies": {
-    "recli-shared": "workspace:*",
+    "vicli-shared": "workspace:*",
     "vue": "3.2.45"
   }
 }

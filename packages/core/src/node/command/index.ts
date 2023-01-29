@@ -2,7 +2,7 @@
 
 import {CAC} from 'cac'
 
-const program = new CAC('recli')
+const program = new CAC('vicli')
 
 export function createCommand(callback: (program: CAC) => void) {
   program.option('--type [type]', 'Choose a project type', {default: 'node'})

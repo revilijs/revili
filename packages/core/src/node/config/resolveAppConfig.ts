@@ -4,8 +4,8 @@ import {defaultAppConfig} from './defaultAppConfig.js'
 import {resolvePlugin} from './resolvePlugin.js'
 import {resolveUserConfig} from './resolveUserConfigConventionalPath.js'
 
-import {DefinePluginReturn} from 'recli-shared/node'
-import type {AppOptions, AppConfig, LayoutOption, SidebarItem} from 'recli-shared/common'
+import {DefinePluginReturn} from 'vicli-shared/node'
+import type {AppOptions, AppConfig, LayoutOption, SidebarItem} from 'vicli-shared/common'
 
 export async function resolveAppConfig(): Promise<AppConfig> {
   const userConfig = await resolveUserConfig()

@@ -1,6 +1,6 @@
 /** @format */
 
-import {DefinePluginReturn} from 'recli-shared/node'
+import {DefinePluginReturn} from 'vicli-shared/node'
 import {defineAsyncComponent, App} from 'vue'
 import {RouteRecordRaw} from 'vue-router'
 
@@ -30,14 +30,14 @@ export function asyncComponent(app: App<Element>, fileGlob: string): void {
 }
 
 // 自动注册路由
-export function parseRoute(recliPlugin: DefinePluginReturn): Array<RouteRecordRaw> {
+export function parseRoute(vicliPlugin: DefinePluginReturn): Array<RouteRecordRaw> {
   let parsedRoute: Array<RouteRecordRaw> = []
-  const navbarPath = recliPlugin?.layouts?.navbar.route
+  const navbarPath = vicliPlugin?.layouts?.navbar.route
 
   const modules = getModules()
 
   Object.keys(modules).forEach(key => {
-    const fileName = getFileNameByPath(recliPlugin.name, key)
+    const fileName = getFileNameByPath(vicliPlugin.name, key)
 
     parsedRoute.push({
       path: `${navbarPath}/${fileName}`,

@@ -1,12 +1,12 @@
 /** @format */
 
-import {definePlugin, useServerSocket} from 'recli-shared/node'
-import type {DefinePluginReturn} from 'recli-shared/node'
+import {definePlugin, useServerSocket} from 'vicli-shared/node'
+import type {DefinePluginReturn} from 'vicli-shared/node'
 import path from 'node:path'
 import {DIST_CLIENT_PATH} from './alias.js'
 
 const metaManagerPlugin: DefinePluginReturn = definePlugin({
-  name: 'recli-plugin-code-generator',
+  name: 'vicli-plugin-code-generator',
 
   layouts: {
     pages: path.join(DIST_CLIENT_PATH, './pages'),

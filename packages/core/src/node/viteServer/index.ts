@@ -9,10 +9,10 @@ import tailwindcss from 'tailwindcss'
 import autoprefixer from 'autoprefixer'
 import postcssEach from 'postcss-each'
 import {tailwindcssConfig} from './tailwindcssConfig/index.js'
-import {recliPlugin} from './plugins/vitePluginRecli.js'
+import {vicliPlugin} from './plugins/vitePluginVicli.js'
 import {virtualModulePlugin} from './plugins/vitePluginVirtualModule.js'
 import {USER_PROJECT_ROOT, DIST_CLIENT_PATH} from '../alias.js'
-import {AppConfig} from 'recli-shared/common'
+import {AppConfig} from 'vicli-shared/common'
 
 export async function createViteServer(appConfig: AppConfig) {
   const userVitePlugins = appConfig.plugins.map(plugin => plugin.vitePlugin())
@@ -48,7 +48,7 @@ export async function createViteServer(appConfig: AppConfig) {
       // @ts-ignore
       vueJsxPlugin(),
       virtualModulePlugin(appConfig),
-      recliPlugin(),
+      vicliPlugin(),
       ...userVitePlugins,
     ],
     /**

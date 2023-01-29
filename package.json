@@ -1,5 +1,5 @@
 {
-  "name": "recli-monorepo",
+  "name": "vicli-monorepo",
   "version": "1.0.0",
   "description": "A command and GUI integration tool based on vite.",
   "private": true,

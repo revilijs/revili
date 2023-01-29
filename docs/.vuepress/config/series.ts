@@ -4,7 +4,7 @@ export const series = {
   '/docs/guide/': [
     {
       text: '指南',
-      children: ['introduction', 'getting-started', 'plugin', 'recli-config', 'ui-architecture'],
+      children: ['introduction', 'getting-started', 'plugin', 'vicli-config', 'ui-architecture'],
     },
   ],
   '/docs/api/': [

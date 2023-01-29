@@ -4,7 +4,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import {APP_PATH} from '../alias.js'
 
-import type {DefinePluginReturn} from 'recli-shared/node'
+import type {DefinePluginReturn} from 'vicli-shared/node'
 
 export async function resolvePlugin(pluginPkg: string): Promise<DefinePluginReturn> {
   const pluginOptions = (await import(pluginPkg)).default

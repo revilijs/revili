@@ -1,7 +1,7 @@
 /** @format */
 
 import type {Plugin} from 'vite'
-import {AppConfig} from 'recli-shared/common'
+import {AppConfig} from 'vicli-shared/common'
 
 export const virtualModulePlugin = (appConfig: AppConfig): Plugin => {
   const virtualModuleId = 'virtual:custom-routes'

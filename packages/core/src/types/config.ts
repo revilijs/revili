@@ -1,6 +1,6 @@
 /** @format */
 
-import type {DefinePluginReturn} from 'recli-shared/node'
+import type {DefinePluginReturn} from 'vicli-shared/node'
 export interface SidebarItem {
   title: string
   route: string
