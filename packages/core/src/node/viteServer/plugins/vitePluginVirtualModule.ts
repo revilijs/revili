@@ -1,5 +1,3 @@
-/** @format */
-
 import type {Plugin} from 'vite'
 import {AppConfig} from 'vicli-shared/common'
 

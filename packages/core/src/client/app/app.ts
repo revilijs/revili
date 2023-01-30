@@ -1,5 +1,3 @@
-/** @format */
-
 import {createApp, h} from 'vue'
 import App from './App.vue'
 import {createVueRouter} from './router/index.js'

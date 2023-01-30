@@ -1,5 +1,3 @@
-/** @format */
-
 import {definePlugin, useServerSocket} from 'vicli-shared/node'
 import type {DefinePluginReturn} from 'vicli-shared/node'
 import path from 'node:path'

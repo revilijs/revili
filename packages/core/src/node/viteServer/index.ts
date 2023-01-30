@@ -1,5 +1,3 @@
-/** @format */
-
 import {createServer} from 'vite'
 import {default as vuePlugin} from '@vitejs/plugin-vue'
 import {default as vueJsxPlugin} from '@vitejs/plugin-vue-jsx'
@@ -11,11 +9,19 @@ import postcssEach from 'postcss-each'
 import {tailwindcssConfig} from './tailwindcssConfig/index.js'
 import {vicliPlugin} from './plugins/vitePluginVicli.js'
 import {virtualModulePlugin} from './plugins/vitePluginVirtualModule.js'
-import {USER_PROJECT_ROOT, DIST_CLIENT_PATH} from '../alias.js'
+import {
+  USER_PROJECT_ROOT,
+  DIST_CLIENT_PATH,
+  PKG_ROOT_NODE_MODULES,
+  PKG_ROOT_NODE_MODULES_DEVELOPMENT,
+} from '../alias.js'
 import {AppConfig} from 'vicli-shared/common'
 
 export async function createViteServer(appConfig: AppConfig) {
   const userVitePlugins = appConfig.plugins.map(plugin => plugin.vitePlugin())
+
+  const node_modules = appConfig.devMode ? PKG_ROOT_NODE_MODULES_DEVELOPMENT : PKG_ROOT_NODE_MODULES
+
   const server = await createServer({
     configFile: false,
     root: USER_PROJECT_ROOT,
@@ -57,11 +63,35 @@ export async function createViteServer(appConfig: AppConfig) {
      * @link https://vitejs.cn/vite3-cn/guide/dep-pre-bundling.html#monorepos-and-linked-dependencies
      */
     optimizeDeps: {
-      include: ['@ss/mtd-vue-next', 'vue'],
+      // tip: 实际引用可能不会添加 .js 后缀，所以 optimizeDeps.include 需要去掉
+      include: [
+        `${node_modules}/vue`,
+        `${node_modules}/js-calendar`,
+        `${node_modules}/@ss/mtd-vue-next`,
+        `${node_modules}/@ss/mtd-vue-next/node_modules/dayjs`,
+        `${node_modules}/@ss/mtd-vue-next/node_modules/dayjs/plugin/advancedFormat`,
+        `${node_modules}/@ss/mtd-vue-next/node_modules/dayjs/plugin/isBetween`,
+        `${node_modules}/@ss/mtd-vue-next/node_modules/dayjs/plugin/minMax`,
+        `${node_modules}/@ss/mtd-vue-next/node_modules/dayjs/plugin/weekday`,
+        `${node_modules}/@ss/mtd-vue-next/node_modules/dayjs/plugin/weekOfYear`,
+        `${node_modules}/@ss/mtd-vue-next/node_modules/dayjs/locale/zh-cn`,
+      ],
     },
     build: {
       commonjsOptions: {
-        include: [/@ss\/mtd-vue-next/, 'vue', /node_modules/],
+        include: [
+          `${node_modules}/vue`,
+          `${node_modules}/js-calendar`,
+          `${node_modules}/@ss/mtd-vue-next`,
+          `${node_modules}/@ss/mtd-vue-next/node_modules/dayjs`,
+          `${node_modules}/@ss/mtd-vue-next/node_modules/dayjs/plugin/advancedFormat.js`,
+          `${node_modules}/@ss/mtd-vue-next/node_modules/dayjs/plugin/isBetween.js`,
+          `${node_modules}/@ss/mtd-vue-next/node_modules/dayjs/plugin/minMax.js`,
+          `${node_modules}/@ss/mtd-vue-next/node_modules/dayjs/plugin/weekday.js`,
+          `${node_modules}/@ss/mtd-vue-next/node_modules/dayjs/plugin/weekOfYear.js`,
+          `${node_modules}/@ss/mtd-vue-next/node_modules/dayjs/locale/zh-cn.js`,
+          node_modules,
+        ],
       },
     },
   })

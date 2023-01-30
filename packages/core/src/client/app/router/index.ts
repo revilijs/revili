@@ -1,5 +1,3 @@
-/** @format */
-
 import {createRouter, createWebHashHistory, RouteRecordRaw} from 'vue-router'
 import {routes} from './routes.js'
 // @ts-ignore

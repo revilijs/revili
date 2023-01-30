@@ -1,5 +1,3 @@
-/** @format */
-
 import {defaultAppConfig} from './defaultAppConfig.js'
 import {resolvePlugin} from './resolvePlugin.js'
 import {resolveUserConfig} from './resolveUserConfigConventionalPath.js'

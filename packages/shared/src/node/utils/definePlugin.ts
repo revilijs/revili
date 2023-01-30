@@ -1,5 +1,3 @@
-/** @format */
-
 import {CAC} from 'cac'
 import type {ViteDevServer, Plugin} from 'vite'
 import type {AppConfig} from '../../common/config.js'

@@ -1,13 +1,11 @@
-/** @format */
-
 import fs from 'node:fs'
 import path from 'node:path'
 import {APP_PATH} from '../alias.js'
 
 import type {DefinePluginReturn} from 'vicli-shared/node'
 
-export async function resolvePlugin(pluginPkg: string): Promise<DefinePluginReturn> {
-  const pluginOptions = (await import(pluginPkg)).default
+export async function resolvePlugin(pluginPkg: DefinePluginReturn): Promise<DefinePluginReturn> {
+  const pluginOptions = pluginPkg
 
   cachePageComponent(pluginOptions)
 
@@ -26,10 +24,10 @@ function cachePageComponent(pluginOptions: DefinePluginReturn) {
       const fileData = fs.readFileSync(filePath)
 
       try {
-        fs.mkdirSync(path.join(APP_PATH, `./router/components`))
+        fs.mkdirSync(path.join(APP_PATH, `./extendedPages`))
       } catch (e) {}
 
-      fs.writeFileSync(path.join(APP_PATH, `./router/components/${name}${file}`), fileData)
+      fs.writeFileSync(path.join(APP_PATH, `./extendedPages/${name}-${file}`), fileData)
     })
   }
 }

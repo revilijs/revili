@@ -1,5 +1,3 @@
-/** @format */
-
 import type {AliasOptions, Connect, Plugin, UserConfig} from 'vite'
 import {APP_PATH} from '../../alias.js'
 

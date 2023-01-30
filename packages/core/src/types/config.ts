@@ -1,5 +1,3 @@
-/** @format */
-
 import type {DefinePluginReturn} from 'vicli-shared/node'
 export interface SidebarItem {
   title: string

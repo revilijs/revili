@@ -1,5 +1,3 @@
-/** @format */
-
 export const series = {
   '/docs/guide/': [
     {

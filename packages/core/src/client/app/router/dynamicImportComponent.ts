@@ -1,18 +1,16 @@
-/** @format */
-
 import {DefinePluginReturn} from 'vicli-shared/node'
 import {defineAsyncComponent, App} from 'vue'
 import {RouteRecordRaw} from 'vue-router'
 
 export function getModules() {
   // @ts-ignore
-  const components = import.meta.glob('./components/*.vue')
+  const components = import.meta.glob('../extendedPages/*.vue')
   return components
 }
 
 export function getComponents() {
   // @ts-ignore
-  const components = import.meta.globEager('./components/*.vue')
+  const components = import.meta.globEager('./extendedPages/*.vue')
   return components
 }
 
@@ -50,8 +48,7 @@ export function parseRoute(vicliPlugin: DefinePluginReturn): Array<RouteRecordRa
 }
 
 export function getFileNameByPath(name: string, filePath: string) {
-  // const regexp = /()([\w\d]*)(\.vue)/
-  const regexp = new RegExp(`(${name})([\\w\\d]*)(\.vue)`)
+  const regexp = new RegExp(`(${name})-([\\w\\d-_]*)(\.vue)`)
   const result = filePath.match(regexp)
 
   return result ? result[2] : ''

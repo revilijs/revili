@@ -1,5 +1,3 @@
-/** @format */
-
 import {CAC} from 'cac'
 
 const program = new CAC('vicli')
