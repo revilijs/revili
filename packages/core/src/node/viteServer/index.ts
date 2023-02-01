@@ -58,7 +58,7 @@ export async function createViteServer(appConfig: AppConfig) {
       ...userVitePlugins,
     ],
     /**
-     * 适配 Vue、MTD-Vue 导出文件不是 ESM的情况
+     * 适配 Vue 等导出文件不是 ESM的情况
      * @desc 这需要被链接的依赖被导出为 ESM 格式。如果不是，那么你可以在配置里将此依赖添加到 optimizeDeps.include 和 build.commonjsOptions.include 这两项中
      * @link https://vitejs.cn/vite3-cn/guide/dep-pre-bundling.html#monorepos-and-linked-dependencies
      */
@@ -67,14 +67,6 @@ export async function createViteServer(appConfig: AppConfig) {
       include: [
         `${node_modules}/vue`,
         `${node_modules}/js-calendar`,
-        `${node_modules}/@ss/mtd-vue-next`,
-        `${node_modules}/@ss/mtd-vue-next/node_modules/dayjs`,
-        `${node_modules}/@ss/mtd-vue-next/node_modules/dayjs/plugin/advancedFormat`,
-        `${node_modules}/@ss/mtd-vue-next/node_modules/dayjs/plugin/isBetween`,
-        `${node_modules}/@ss/mtd-vue-next/node_modules/dayjs/plugin/minMax`,
-        `${node_modules}/@ss/mtd-vue-next/node_modules/dayjs/plugin/weekday`,
-        `${node_modules}/@ss/mtd-vue-next/node_modules/dayjs/plugin/weekOfYear`,
-        `${node_modules}/@ss/mtd-vue-next/node_modules/dayjs/locale/zh-cn`,
       ],
     },
     build: {
@@ -82,14 +74,6 @@ export async function createViteServer(appConfig: AppConfig) {
         include: [
           `${node_modules}/vue`,
           `${node_modules}/js-calendar`,
-          `${node_modules}/@ss/mtd-vue-next`,
-          `${node_modules}/@ss/mtd-vue-next/node_modules/dayjs`,
-          `${node_modules}/@ss/mtd-vue-next/node_modules/dayjs/plugin/advancedFormat.js`,
-          `${node_modules}/@ss/mtd-vue-next/node_modules/dayjs/plugin/isBetween.js`,
-          `${node_modules}/@ss/mtd-vue-next/node_modules/dayjs/plugin/minMax.js`,
-          `${node_modules}/@ss/mtd-vue-next/node_modules/dayjs/plugin/weekday.js`,
-          `${node_modules}/@ss/mtd-vue-next/node_modules/dayjs/plugin/weekOfYear.js`,
-          `${node_modules}/@ss/mtd-vue-next/node_modules/dayjs/locale/zh-cn.js`,
           node_modules,
         ],
       },
