@@ -2,7 +2,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import {APP_PATH} from '../alias.js'
 
-import type {DefinePluginReturn} from 'vicli-shared/node'
+import type {DefinePluginReturn} from 'revili-shared/node'
 
 export async function resolvePlugin(pluginPkg: DefinePluginReturn): Promise<DefinePluginReturn> {
   const pluginOptions = pluginPkg

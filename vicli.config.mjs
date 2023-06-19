@@ -1,4 +1,4 @@
-// import dedaultPlugin from 'vicli-plugin-default'
+// import dedaultPlugin from 'revili-plugin-default'
 
 export default {
   plugins: [],

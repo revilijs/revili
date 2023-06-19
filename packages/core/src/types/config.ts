@@ -1,4 +1,4 @@
-import type {DefinePluginReturn} from 'vicli-shared/node'
+import type {DefinePluginReturn} from 'revili-shared/node'
 export interface SidebarItem {
   title: string
   route: string

@@ -3,7 +3,7 @@ import {routes} from './routes.js'
 // @ts-ignore
 import {appConfig} from 'virtual:custom-routes'
 import {parseRoute} from './dynamicImportComponent.js'
-import {DefinePluginReturn} from 'vicli-shared/node'
+import {DefinePluginReturn} from 'revili-shared/node'
 
 const renderCustomRoutes = async () => {
   const customRoutes = appConfig.plugins.reduce((prev: Array<RouteRecordRaw>, next: DefinePluginReturn) => {

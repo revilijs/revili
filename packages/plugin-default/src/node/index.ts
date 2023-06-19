@@ -1,10 +1,10 @@
-import {definePlugin, useServerSocket} from 'vicli-shared/node'
-import type {DefinePluginReturn} from 'vicli-shared/node'
+import {definePlugin, useServerSocket} from 'revili-shared/node'
+import type {DefinePluginReturn} from 'revili-shared/node'
 import path from 'node:path'
 import {DIST_CLIENT_PATH} from './alias.js'
 
 const metaManagerPlugin: DefinePluginReturn = definePlugin({
-  name: 'vicli-plugin-code-generator',
+  name: 'revili-plugin-code-generator',
 
   layouts: {
     pages: path.join(DIST_CLIENT_PATH, './pages'),

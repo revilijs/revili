@@ -1,6 +1,6 @@
-import dedaultPlugin from 'vicli-plugin-default'
+import dedaultPlugin from 'revili-plugin-default'
 
-import type {AppOptions} from 'vicli-shared/common'
+import type {AppOptions} from 'revili-shared/common'
 
 export const defaultAppConfig: AppOptions = {
   devMode: false,

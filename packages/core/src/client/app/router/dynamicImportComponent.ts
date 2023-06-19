@@ -1,4 +1,4 @@
-import {DefinePluginReturn} from 'vicli-shared/node'
+import {DefinePluginReturn} from 'revili-shared/node'
 import {defineAsyncComponent, App} from 'vue'
 import {RouteRecordRaw} from 'vue-router'
 
@@ -28,14 +28,14 @@ export function asyncComponent(app: App<Element>, fileGlob: string): void {
 }
 
 // 自动注册路由
-export function parseRoute(vicliPlugin: DefinePluginReturn): Array<RouteRecordRaw> {
+export function parseRoute(reviliPlugin: DefinePluginReturn): Array<RouteRecordRaw> {
   let parsedRoute: Array<RouteRecordRaw> = []
-  const navbarPath = vicliPlugin?.layouts?.navbar.route
+  const navbarPath = reviliPlugin?.layouts?.navbar.route
 
   const modules = getModules()
 
   Object.keys(modules).forEach(key => {
-    const fileName = getFileNameByPath(vicliPlugin.name, key)
+    const fileName = getFileNameByPath(reviliPlugin.name, key)
 
     parsedRoute.push({
       path: `${navbarPath}/${fileName}`,

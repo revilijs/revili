@@ -1,6 +1,6 @@
 {
-  "name": "vicli-monorepo",
-  "version": "1.0.0",
+  "name": "revili-monorepo",
+  "version": "0.0.1",
   "description": "A command and GUI integration tool based on vite.",
   "private": true,
   "main": "index.js",

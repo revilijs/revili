@@ -1,6 +1,6 @@
 <template><div>code generator</div></template>
 <script lang="ts" setup>
-import { useClientSocket } from 'vicli-shared/client'
+import { useClientSocket } from 'revili-shared/client'
 
 const socket = useClientSocket()
 

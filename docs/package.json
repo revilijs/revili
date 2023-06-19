@@ -1,5 +1,5 @@
 {
-  "name": "vicli-docs",
+  "name": "revili-docs",
   "private": true,
   "scripts": {
     "dev": "vuepress dev .",

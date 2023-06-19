@@ -3,8 +3,8 @@ import {APP_PATH} from '../../alias.js'
 
 const cleanUrl = (url: string): string => url.replace(/#.*$/s, '').replace(/\?.*$/s, '')
 
-export const vicliPlugin = (): Plugin => ({
-  name: 'vite-plugin-vicli',
+export const reviliPlugin = (): Plugin => ({
+  name: 'vite-plugin-revili',
 
   configureServer(server) {
     // todd 自动优化 config 文件

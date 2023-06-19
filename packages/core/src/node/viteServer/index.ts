@@ -7,7 +7,7 @@ import tailwindcss from 'tailwindcss'
 import autoprefixer from 'autoprefixer'
 import postcssEach from 'postcss-each'
 import {tailwindcssConfig} from './tailwindcssConfig/index.js'
-import {vicliPlugin} from './plugins/vitePluginVicli.js'
+import {reviliPlugin} from './plugins/vitePluginRevili.js'
 import {virtualModulePlugin} from './plugins/vitePluginVirtualModule.js'
 import {
   USER_PROJECT_ROOT,
@@ -15,7 +15,7 @@ import {
   PKG_ROOT_NODE_MODULES,
   PKG_ROOT_NODE_MODULES_DEVELOPMENT,
 } from '../alias.js'
-import {AppConfig} from 'vicli-shared/common'
+import {AppConfig} from 'revili-shared/common'
 
 export async function createViteServer(appConfig: AppConfig) {
   const userVitePlugins = appConfig.plugins.map(plugin => plugin.vitePlugin())
@@ -54,7 +54,7 @@ export async function createViteServer(appConfig: AppConfig) {
       // @ts-ignore
       vueJsxPlugin(),
       virtualModulePlugin(appConfig),
-      vicliPlugin(),
+      reviliPlugin(),
       ...userVitePlugins,
     ],
     /**

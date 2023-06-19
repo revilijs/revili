@@ -1,6 +1,6 @@
 {
-  "name": "vicli-plugin-default",
-  "version": "1.0.0",
+  "name": "revili-plugin-default",
+  "version": "0.0.1",
   "description": "",
   "main": "dist/node/index.js",
   "module": "dist/node/index.js",
@@ -21,7 +21,7 @@
   "author": "luanhewei",
   "license": "ISC",
   "dependencies": {
-    "vicli-shared": "workspace:*",
+    "revili-shared": "workspace:*",
     "vue": "3.2.45"
   }
 }

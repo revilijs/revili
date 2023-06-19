@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router'
 import type { MenuOption } from 'naive-ui'
 // @ts-ignore
 import { appConfig } from 'virtual:custom-routes'
-import { LayoutOption } from 'vicli-shared/common'
+import { LayoutOption } from 'revili-shared/common'
 
 const router = useRouter()
 
