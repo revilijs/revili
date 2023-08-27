@@ -1,24 +1,30 @@
 #!/usr/bin/env node
 
-import {createCommand} from './command/index.js'
-import {createViteServer} from './viteServer/index.js'
-import {resolveAppConfig} from './config/resolveAppConfig.js'
+import {
+  initCommand,
+  getReviliCache,
+  createAddCommand,
+  createDevCommand,
+  createKitCommands,
+  createUseCommand,
+  createRemoveCommand
+} from './command/index.js'
+
+// import {getMergedConfig} from './config/getMergedConfig.js'
+
 ;(async () => {
-  const appConfig = await resolveAppConfig()
+  // todo: revili.config.js 后期再重构
+  // const config = await getMergedConfig()
 
-  createCommand(program => {
-    program
-      .command('dev', 'Starting the service')
-      .option('-d, --development', 'Development Mode')
-      .action(async options => {
-        if (options.d === true || options.development === true) {
-          appConfig.devMode = true
-        }
-        await createViteServer(appConfig)
-      })
+  await initCommand(async program => {
+    createAddCommand(program)
+    createDevCommand(program)
+    createUseCommand(program)
+    createRemoveCommand(program)
 
-    appConfig.plugins.forEach(plugin => {
-      plugin.registerCommand({program, appConfig})
-    })
+    const reviliCache = await getReviliCache()
+    if (reviliCache.activeKit) {
+      await createKitCommands(program)
+    }
   })
 })()

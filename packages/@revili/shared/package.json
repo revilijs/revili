@@ -1,6 +1,6 @@
 {
-  "name": "revili-shared",
-  "version": "0.0.1",
+  "name": "@revili/shared",
+  "version": "0.0.0",
   "description": "",
   "type": "module",
   "exports": {
@@ -31,6 +31,9 @@
   "keywords": [],
   "author": "luanhewei",
   "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "cac": "6.7.14",
     "vite": "3.2.3",

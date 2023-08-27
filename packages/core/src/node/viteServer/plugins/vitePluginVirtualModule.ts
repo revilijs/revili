@@ -1,12 +1,13 @@
 import type {Plugin} from 'vite'
-import {AppConfig} from 'revili-shared/common'
+import {AppConfig} from '@revili/shared/common'
+import { toLowerCamelCase } from '../../utils/index.js'
 
-export const virtualModulePlugin = (appConfig: AppConfig): Plugin => {
-  const virtualModuleId = 'virtual:custom-routes'
+export const virtualModulePlugin = (moduleKey: string, moduleValue: any): Plugin => {
+  const virtualModuleId =`virtual:${moduleKey}`
   const resolvedVirtualModuleId = '\0' + virtualModuleId
 
   return {
-    name: 'vite-plugin-virtual-custom-routes',
+    name: `vite-plugin-virtual-${moduleKey}`,
 
     //@ts-ignore
     resolveId(id) {
@@ -18,7 +19,10 @@ export const virtualModulePlugin = (appConfig: AppConfig): Plugin => {
     //@ts-ignore
     load(id) {
       if (id === resolvedVirtualModuleId) {
-        return `export const appConfig = JSON.parse(${JSON.stringify(JSON.stringify(appConfig))})`
+        const variableKey = toLowerCamelCase(moduleKey)
+        const variablevalue = `JSON.parse(${JSON.stringify(JSON.stringify(moduleValue))})`
+
+        return `export const ${variableKey} = ${variablevalue}`
       }
     },
   }

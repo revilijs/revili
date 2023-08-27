@@ -1,4 +1,4 @@
-import {DefinePluginReturn} from 'revili-shared/node'
+import {DefinePluginReturn} from '@revili/shared/node'
 import {defineAsyncComponent, App} from 'vue'
 import {RouteRecordRaw} from 'vue-router'
 

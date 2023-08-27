@@ -1,6 +1,6 @@
 {
-  "name": "revili-plugin-default",
-  "version": "0.0.1",
+  "name": "@revili/revili-kit-default",
+  "version": "0.0.0",
   "description": "",
   "main": "dist/node/index.js",
   "module": "dist/node/index.js",
@@ -20,8 +20,13 @@
   "keywords": [],
   "author": "luanhewei",
   "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
-    "revili-shared": "workspace:*",
-    "vue": "3.2.45"
+    "@revili/shared": "workspace:*",
+    "vue": "3.2.45",
+    "naive-ui": "2.34.2",
+    "vue-router": "^4.1.6"
   }
 }
