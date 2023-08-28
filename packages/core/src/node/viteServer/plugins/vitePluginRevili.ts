@@ -30,7 +30,7 @@ export const reviliPlugin = (clientPath: string): Plugin => ({
 </head>
 <body>
   <div id="app"></div>
-  <script type="module" src="${clientPath}/main.js"></script>
+  <script type="module" src="/@fs/${clientPath}/main.js"></script>
 </body>
 </html>`
           html = await server.transformIndexHtml(url, html, req.originalUrl)

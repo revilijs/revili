@@ -4,7 +4,7 @@ import {
   initCommand,
   getReviliCache,
   createAddCommand,
-  createDevCommand,
+  createStartCommand,
   createKitCommands,
   createUseCommand,
   createRemoveCommand
@@ -18,7 +18,7 @@ import {
 
   await initCommand(async program => {
     createAddCommand(program)
-    createDevCommand(program)
+    createStartCommand(program)
     createUseCommand(program)
     createRemoveCommand(program)
 

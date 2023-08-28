@@ -28,6 +28,8 @@ export async function createViteServer() {
   const clientPath = path.join(CACHE_FOLDER_PATH, `./node_modules/${activeKit}/dist/client`)
   const kitPath = path.join(CACHE_FOLDER_PATH, `./node_modules/${activeKit}/dist/node/index.js`)
 
+  const node_modules = path.join(CACHE_FOLDER_PATH, `./node_modules`)
+
   const kit = (await import(kitPath)).default
 
   const server = await createServer({
@@ -36,7 +38,7 @@ export async function createViteServer() {
     server: {
       port: 6789,
       fs: {
-        allow: [USER_DIR, DIST_CLIENT_PATH],
+        allow: [USER_DIR, DIST_CLIENT_PATH, clientPath],
       },
     },
     css: {
@@ -71,22 +73,28 @@ export async function createViteServer() {
      * @desc 这需要被链接的依赖被导出为 ESM 格式。如果不是，那么你可以在配置里将此依赖添加到 optimizeDeps.include 和 build.commonjsOptions.include 这两项中
      * @link https://vitejs.cn/vite3-cn/guide/dep-pre-bundling.html#monorepos-and-linked-dependencies
      */
-    // optimizeDeps: {
-    //   // tip: 实际引用可能不会添加 .js 后缀，所以 optimizeDeps.include 需要去掉
-    //   include: [
-    //     `${node_modules}/vue`,
-    //     `${node_modules}/js-calendar`,
-    //   ],
-    // },
-    // build: {
-    //   commonjsOptions: {
-    //     include: [
-    //       `${node_modules}/vue`,
-    //       `${node_modules}/js-calendar`,
-    //       node_modules,
-    //     ],
-    //   },
-    // },
+    optimizeDeps: {
+      // tip: 实际引用可能不会添加 .js 后缀，所以 optimizeDeps.include 需要去掉
+      include: [
+        `${node_modules}/vue`,
+        `${node_modules}/js-calendar`,
+        `${node_modules}/date-fns/_lib/format/index.js`,
+        `${node_modules}/date-fns/_lib/getTimezoneOffsetInMilliseconds/index.js`,
+        `${node_modules}/date-fns/_lib/toInteger/index.js`,
+      ],
+    },
+    build: {
+      commonjsOptions: {
+        include: [
+          `${node_modules}/vue`,
+          `${node_modules}/js-calendar`,
+          `${node_modules}/date-fns/_lib/format/index.js`,
+          `${node_modules}/date-fns/_lib/getTimezoneOffsetInMilliseconds/index.js`,
+          `${node_modules}/date-fns/_lib/toInteger/index.js`,
+          node_modules,
+        ],
+      },
+    },
   })
 
   await server.listen()

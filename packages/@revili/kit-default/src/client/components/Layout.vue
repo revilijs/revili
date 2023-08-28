@@ -1,19 +1,13 @@
 <script lang="ts" setup>
-import { ref, computed } from 'vue'
-import { useRouter } from 'vue-router'
-import type { MenuOption } from 'naive-ui'
-// @ts-ignore
-import { kitConfig } from 'virtual:kit-config'
-import { LayoutOption } from '@revili/shared/common'
 </script>
 
 <template>
   <div class="app__container">
-    <n-layout-header class="app__header">
+    <div class="app__header">
       <div class="app__name">
         工作台
       </div>
-    </n-layout-header>
+    </div>
   </div>
 </template>
 
