@@ -2,11 +2,12 @@
   "mode": "exit",
   "tag": "beta",
   "initialVersions": {
-    "@revili/revili-kit-default": "0.0.0",
-    "@revili/shared": "0.0.0",
-    "revili": "0.0.0"
+    "@revili/revili-kit-default": "0.0.1-beta.0",
+    "@revili/shared": "0.0.1-beta.0",
+    "revili": "0.0.1-beta.0"
   },
   "changesets": [
-    "green-kiwis-exist"
+    "green-kiwis-exist",
+    "mighty-rabbits-talk"
   ]
 }
