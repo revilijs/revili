@@ -1,9 +1,10 @@
 import type {AliasOptions, Connect, Plugin, UserConfig} from 'vite'
 import {APP_PATH} from '../../alias.js'
+import {AppConfig} from '@revili/shared/common'
 
 const cleanUrl = (url: string): string => url.replace(/#.*$/s, '').replace(/\?.*$/s, '')
 
-export const reviliPlugin = (): Plugin => ({
+export const reviliPlugin = (clientPath: string): Plugin => ({
   name: 'vite-plugin-revili',
 
   configureServer(server) {
@@ -29,7 +30,7 @@ export const reviliPlugin = (): Plugin => ({
 </head>
 <body>
   <div id="app"></div>
-  <script type="module" src="/@fs/${APP_PATH}/app.js"></script>
+  <script type="module" src="${clientPath}/main.js"></script>
 </body>
 </html>`
           html = await server.transformIndexHtml(url, html, req.originalUrl)
