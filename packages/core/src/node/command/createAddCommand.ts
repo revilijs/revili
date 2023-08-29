@@ -5,19 +5,29 @@ import { promisify } from 'node:util'
 import { initCacheFolder, getReviliCache, setReviliCache, type ReviliCache } from './handleCache.js'
 import { CACHE_FOLDER_PATH } from '../alias.js'
 
+const kitRegExp = /^(@[\d_-\w\W]+\/)?([\d_-\w]+)(@.+)?$/
+
 export function createAddCommand(program: CAC) {
   program
     .command('add <kit>', 'Install kit')
-    .action(async kit => {
-      console.log(kit)
-
+    .action(async targetKit => {
       initCacheFolder()
+
+      if (!kitRegExp.test(targetKit)) {
+        console.error(`[revili] ${targetKit} not found`)
+        return
+      }
+
+      const [, scope = '', name] = targetKit.match(kitRegExp)
+
+      const kit = `${scope}${name}`
+
 
       // 子命令执行安装 npm 包的操作
       const execPromise = promisify(exec);
 
       try {
-        const { stdout } = await execPromise(`cd ${CACHE_FOLDER_PATH} && npm install ${kit} --save`);
+        const { stdout } = await execPromise(`cd ${CACHE_FOLDER_PATH} && npm install ${targetKit} --save`);
 
         if (!/^\nup to date/.test(stdout) && !/^\nadded/.test(stdout)) {
           console.error(`[revili] ${kit} add fail`);

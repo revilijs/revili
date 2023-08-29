@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 开启 Prereleases 模式
-pnpm changeset pre enter beta
+pnpm changeset pre enter alpha
 
 # 提交变更集
 pnpm changeset
