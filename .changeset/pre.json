@@ -1,12 +1,13 @@
 {
   "mode": "exit",
-  "tag": "beta",
+  "tag": "alpha",
   "initialVersions": {
-    "@revili/revili-kit-default": "0.0.1-beta.0",
-    "@revili/shared": "0.0.1-beta.0",
-    "revili": "0.0.1-beta.0"
+    "@revili/revili-kit-default": "0.0.1-beta.1",
+    "@revili/shared": "0.0.1-beta.1",
+    "revili": "0.0.1-beta.1"
   },
   "changesets": [
+    "cold-cooks-smoke",
     "green-kiwis-exist",
     "mighty-rabbits-talk"
   ]

@@ -1,5 +1,11 @@
 # @revili/shared
 
+## 0.0.1-alpha.2
+
+### Patch Changes
+
+- allow version number to be added
+
 ## 0.0.1-beta.1
 
 ### Patch Changes

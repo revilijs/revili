@@ -1,5 +1,13 @@
 # @revili/revili-kit-default
 
+## 0.0.1-alpha.2
+
+### Patch Changes
+
+- allow version number to be added
+- Updated dependencies
+  - @revili/shared@0.0.1-alpha.2
+
 ## 0.0.1-beta.1
 
 ### Patch Changes
