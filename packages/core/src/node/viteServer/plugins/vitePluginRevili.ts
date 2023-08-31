@@ -1,6 +1,4 @@
-import type {AliasOptions, Connect, Plugin, UserConfig} from 'vite'
-import {APP_PATH} from '../../alias.js'
-import {AppConfig} from '@revili/shared/common'
+import type { Plugin } from 'vite'
 
 const cleanUrl = (url: string): string => url.replace(/#.*$/s, '').replace(/\?.*$/s, '')
 
