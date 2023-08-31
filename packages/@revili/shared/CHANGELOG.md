@@ -1,5 +1,11 @@
 # @revili/shared
 
+## 0.0.1-alpha.3
+
+### Patch Changes
+
+- replace CLIENT_PATH by USER_DIR
+
 ## 0.0.1-alpha.2
 
 ### Patch Changes
