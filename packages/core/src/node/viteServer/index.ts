@@ -13,7 +13,7 @@ import tailwindcssNesting from 'tailwindcss/nesting/index.js'
 import {tailwindcssConfig} from './tailwindcssConfig/index.js'
 import {reviliPlugin} from './plugins/vitePluginRevili.js'
 import {virtualModulePlugin} from './plugins/vitePluginVirtualModule.js'
-import { CACHE_FOLDER_PATH } from '../alias.js'
+import { CACHE_FOLDER_PATH, USER_DIR } from '../alias.js'
 import { getReviliCache } from '../command/handleCache.js'
 
 export async function createViteServer() {
@@ -32,7 +32,7 @@ export async function createViteServer() {
     server: {
       port: 6789,
       fs: {
-        allow: [CLIENT_PATH],
+        allow: [USER_DIR, CLIENT_PATH], // todo: USER_DIR: dev, CLIENT_PATH: prod, need split use mode option
       },
     },
     css: {
@@ -47,7 +47,6 @@ export async function createViteServer() {
         ],
       },
     },
-    // @ts-ignore
     plugins: [
       // @ts-ignore
       vuePlugin({
@@ -57,7 +56,6 @@ export async function createViteServer() {
       }),
       // @ts-ignore
       vueJsxPlugin(),
-      // @ts-ignore
       virtualModulePlugin('kit-config', activeKit),
       reviliPlugin(CLIENT_PATH),
       activeKit.vitePlugin
@@ -67,20 +65,20 @@ export async function createViteServer() {
      * @desc 这需要被链接的依赖被导出为 ESM 格式。如果不是，那么你可以在配置里将此依赖添加到 optimizeDeps.include 和 build.commonjsOptions.include 这两项中
      * @link https://vitejs.cn/vite3-cn/guide/dep-pre-bundling.html#monorepos-and-linked-dependencies
      */
-    // optimizeDeps: {
-    //   // tip: 实际引用可能不会添加 .js 后缀，所以 optimizeDeps.include 需要去掉
-    //   include: [
-    //     `${NODE_MODULES_PATH_OF_KIT}/vue`,
-    //   ],
-    // },
-    // build: {
-    //   commonjsOptions: {
-    //     include: [
-    //       `${NODE_MODULES_PATH_OF_KIT}/vue`,
-    //       NODE_MODULES_PATH_OF_KIT,
-    //     ],
-    //   },
-    // },
+    optimizeDeps: {
+      // tip: 实际引用可能不会添加 .js 后缀，所以 optimizeDeps.include 需要去掉
+      include: [
+        // `${NODE_MODULES_PATH_OF_KIT}/vue`,
+      ],
+    },
+    build: {
+      commonjsOptions: {
+        include: [
+          // `${NODE_MODULES_PATH_OF_KIT}/vue`,
+          // NODE_MODULES_PATH_OF_KIT,
+        ],
+      },
+    },
   })
 
   await server.listen()
