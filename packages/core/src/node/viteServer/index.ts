@@ -16,7 +16,7 @@ import {virtualModulePlugin} from './plugins/vitePluginVirtualModule.js'
 import { CACHE_FOLDER_PATH, USER_DIR } from '../alias.js'
 import { getReviliCache } from '../command/handleCache.js'
 
-export async function createViteServer() {
+export async function createViteServer(devMode: boolean) {
   const { activeKit: activeKitName } = await getReviliCache();
 
   const NODE_MODULES_PATH_OF_KIT = path.join(CACHE_FOLDER_PATH, `./node_modules`);
@@ -32,7 +32,7 @@ export async function createViteServer() {
     server: {
       port: 6789,
       fs: {
-        allow: [USER_DIR, CLIENT_PATH], // todo: USER_DIR: dev, CLIENT_PATH: prod, need split use mode option
+        allow: [devMode ? USER_DIR : CLIENT_PATH],
       },
     },
     css: {
@@ -58,7 +58,7 @@ export async function createViteServer() {
       vueJsxPlugin(),
       virtualModulePlugin('kit-config', activeKit),
       reviliPlugin(CLIENT_PATH),
-      activeKit.vitePlugin
+      activeKit.vitePlugin()
     ],
     /**
      * 适配 Vue 等导出文件不是 ESM的情况
