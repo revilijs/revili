@@ -13,7 +13,7 @@
   "scripts": {
     "build": "tsc",
     "clean": "rimraf dist",
-    "copy": "cpx \"src/**/*.{d.ts,vue,html}\" dist",
+    "copy": "cpx \"src/**/*.{d.ts,vue,html,png,svg,jpg}\" dist",
     "eslint": "eslint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
