@@ -2,11 +2,11 @@ export const bulletin = {
   body: [
     {
       type: 'title',
-      content: '联系我们',
+      content: '欢迎试用，沟通交流请加微信:',
     },
     {
       type: 'image',
-      src: `https://img.shields.io/badge/author-luanhewei-brightgreen.svg?style=flat-square`,
+      src: `https://img.shields.io/badge/wechat-reco__luan-brightgreen.svg?style=flat-square`,
       style: 'width: 150px',
     },
   ],

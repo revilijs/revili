@@ -5,7 +5,7 @@ modules:
   - MdContent
   - Footer
 bannerBrand:
-  heroImage: /hero.svg
+  heroImage: /revili.svg
   heroImageStyle:
     maxWidth: '200px'
     width: '100%'
@@ -13,10 +13,13 @@ bannerBrand:
     margin: '0 auto 2rem'
     borderRadius: '1rem'
   bgImage: '/bg.svg'
-  heroText: Revili
-  tagline: 一款基于 Vite、Vue3 的脚手架模块化解决方案，支持 UI、server function、command 的扩展。
+  title: Revili
+  description: A command and GUI integration tool based on vite.
+  tagline: Revili allows you to expand functionality through kit. Kit is a fully functional revili extension package, that includes commands, client and server of GUI. Kit are independent of each other.
   buttons:
     - { text: Guide, link: '/docs/guide/introduction.html' }
     - { text: Getting Started, link: '/docs/guide/getting-started.html', type: 'plain' }
+  socialLinks:
+    - { icon: 'LogoGithub', link: 'https://github.com/recoluan/revili' }
 isShowTitleInHome: true
 ---

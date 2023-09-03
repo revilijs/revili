@@ -6,44 +6,65 @@ title: 快速开始
 
 - [Node.js v12+](https://nodejs.org/en/)
 
-## 安装
+## Try
 
-**步骤1:** 在项目中创建依赖
-
-:::: code-group
-::: code-group-item PNPM
 ```bash
-pnpm add @spider/sili@next -D
+npm install revili@next -g
+revili add @revili/revili-kit-default@next
+
+# command 'start' is registered from revili
+revili start
+
+# command 'path' is registered from @revili/revili-kit-default
+revili path
 ```
-:::
-::: code-group-item YARN
+
+## Built-in commands
+
+### add
+
+Install the kit.
+
 ```bash
-yarn add @spider/sili@next -D
-```
-:::
-::::
-
-**步骤2:** 在 package.json 中添加一些 scripts
-
-```json
-{
-  "scripts": {
-    "sili:dev": "sili dev",
-  }
-}
+revili add @revili/revili-kit-default
 ```
 
-**步骤3:** 启动 GUI
+### remove
 
-:::: code-group
-::: code-group-item PNPM
-```json
-pnpm sili:dev
+Remove the kit.
+
+```bash
+revili remove @revili/revili-kit-default
 ```
-:::
-::: code-group-item YARN
-```json
-yarn sili:dev
+
+### use
+
+Switch the kit.
+
+```bash
+revili use @revili/revili-kit-default
 ```
-:::
-::::
+
+### start
+
+Start the local services provided by the kit.
+
+```bash
+revili use @revili/revili-kit-default
+revili start
+```
+
+### ls/list
+
+Check the added kits.
+
+```bash
+revili ls
+
+# or
+revili list
+```
+
+## Kit
+
+Kit is a fully functional revili extension package, that includes commands, client and server of GUI. Kit are independent of each other.

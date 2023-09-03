@@ -1,7 +1,7 @@
 export const navbar = [
   { text: 'Guide', link: '/docs/guide/introduction' },
-  { text: 'Shared API', link: '/docs/api/define-plugin' },
-  { text: 'Plugin Store', link: '/docs/other/plugin-store' },
+  { text: 'Shared API', link: '/docs/api/shared-api' },
+  { text: 'Kit Store', link: '/docs/kit-store/@revili/revili-kit-default' },
   // {
   //   text: '参考 API',
   //   children: [

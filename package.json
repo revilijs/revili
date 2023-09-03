@@ -45,7 +45,6 @@
     "@types/node": "18.11.9",
     "@typescript-eslint/eslint-plugin": "^5.46.1",
     "@typescript-eslint/parser": "^5.46.1",
-    "@vuepress/client": "2.0.0-beta.51",
     "commitizen": "4.2.5",
     "cpx2": "4.1.2",
     "cz-customizable": "6.3.0",

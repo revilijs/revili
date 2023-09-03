@@ -4,8 +4,11 @@ import { bulletin } from './bulletin'
 
 export const themeConfig = {
   style: '@vuepress-reco/style-default',
-  logo: '/logo.svg',
+  logo: '/revili.svg',
   author: 'reco_luan',
+  docsRepo: 'https://github.com/recoluan/revili',
+  docsBranch: 'main',
+  docsDir: '/docs',
   lastUpdatedText: '最后更新时间',
   series,
   navbar,
