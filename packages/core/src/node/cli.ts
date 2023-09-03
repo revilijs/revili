@@ -7,7 +7,8 @@ import {
   createStartCommand,
   createKitCommands,
   createUseCommand,
-  createRemoveCommand
+  createRemoveCommand,
+  createListCommand,
 } from './command/index.js'
 
 // import {getMergedConfig} from './config/getMergedConfig.js'
@@ -21,6 +22,7 @@ import {
     createStartCommand(program)
     createUseCommand(program)
     createRemoveCommand(program)
+    createListCommand(program)
 
     const reviliCache = await getReviliCache()
     if (reviliCache.activeKit) {
