@@ -1,9 +1,9 @@
 import {CAC} from 'cac'
-import { exec } from 'node:child_process'
-import { promisify } from 'node:util'
+import { spinner, chalk } from '@revili/shared/node'
 
-import { initCacheFolder, getReviliCache, setReviliCache, type ReviliCache } from './handleCache.js'
 import { CACHE_FOLDER_PATH } from '../alias.js'
+import { execPromise } from '../utils/childProcess.js'
+import { initCacheFolder, getReviliCache, setReviliCache, type ReviliCache } from './handleCache.js'
 
 const kitRegExp = /^(@[\d_-\w\W]+\/)?([\d_-\w]+)(@.+)?$/
 
@@ -24,13 +24,13 @@ export function createAddCommand(program: CAC) {
 
 
       // 子命令执行安装 npm 包的操作
-      const execPromise = promisify(exec);
-
       try {
+        spinner.start(chalk.blue('[revili] ') + `${targetKit} is loading!`)
+
         const { stdout } = await execPromise(`cd ${CACHE_FOLDER_PATH} && npm install ${targetKit} --save`);
 
         if (!/^\nup to date/.test(stdout) && !/^\nadded/.test(stdout)) {
-          console.error(`[revili] ${kit} add fail`);
+          spinner.fail(chalk.red('[revili] ') + `${targetKit} failed to load!`)
         } else {
           const reviliCache: ReviliCache = await getReviliCache()
 
@@ -38,9 +38,13 @@ export function createAddCommand(program: CAC) {
           reviliCache.kitList.push(kit)
 
           setReviliCache(reviliCache)
+
+          spinner.succeed(chalk.green('[revili] ') + `${targetKit} loaded successfully!`)
         }
       } catch (error) {
-        console.error(`[revili] ${kit} not found`)
+        spinner.fail(chalk.red('[revili] ') + `${targetKit} was not found!`)
       }
+
+      spinner.stop();
     })
 }

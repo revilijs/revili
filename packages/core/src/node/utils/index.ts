@@ -1,3 +1,7 @@
+import { chalk } from "@revili/shared/node";
+
+export * from './childProcess.js'
+
 export function toLowerCamelCase(str: string): string {
   let arr: string[] = str.split('-');
 
@@ -11,4 +15,19 @@ export function toLowerCamelCase(str: string): string {
   str = arr.join('');
 
   return str;
+}
+
+export const consoleUtil = {
+  log(info: any) {
+    console.log(chalk.blue('[revili] ') + info)
+  },
+  success(info: any) {
+    console.log(chalk.green('[revili] ') + info)
+  },
+  warn(info: any) {
+    console.warn(chalk.yellow('[revili] ') + info)
+  },
+  error(info: any) {
+    console.error(chalk.red('[revili] ') + info)
+  }
 }
