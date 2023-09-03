@@ -20,18 +20,18 @@ interface Layouts {
   sidebar: Array<SidebarItem>
 }
 
-export interface PluginOptions {
+export interface KitOptions {
   name: string
   layouts?: Layouts
   registerService?: (server: ViteDevServer) => void
   registerCommand: (params: {program: CAC; appConfig: AppConfig}) => void
 }
 
-export type DefinePluginReturn = Omit<PluginOptions, 'registerService'> & {
+export type DefineKitReturn = Omit<KitOptions, 'registerService'> & {
   vitePlugin: () => Plugin
 }
 
-export function definePlugin(options: PluginOptions): DefinePluginReturn {
+export function defineKit(options: KitOptions): DefineKitReturn {
   const {name, registerService, ...args} = options
 
   return {

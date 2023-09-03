@@ -4,4 +4,4 @@ import inquirer from './inquirer.js';
 
 export { ora, spinner, chalk, inquirer }
 
-export * from "./definePlugin.js";
+export * from "./defineKit.js";
