@@ -1,6 +1,6 @@
 {
   "name": "revili",
-  "version": "0.0.1-alpha.3",
+  "version": "0.0.1-alpha.4",
   "description": "",
   "main": "index.js",
   "type": "module",
@@ -28,7 +28,14 @@
     "eslint": "eslint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["cli", "gui", "command", "server", "vite", "integration tool"],
+  "keywords": [
+    "cli",
+    "gui",
+    "command",
+    "server",
+    "vite",
+    "integration tool"
+  ],
   "author": "luanhewei",
   "license": "ISC",
   "publishConfig": {

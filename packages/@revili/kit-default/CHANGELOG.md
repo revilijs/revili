@@ -1,5 +1,13 @@
 # @revili/revili-kit-default
 
+## 0.0.1-alpha.4
+
+### Patch Changes
+
+- perfect @revili/revili-kit-default
+- Updated dependencies
+  - @revili/shared@0.0.1-alpha.4
+
 ## 0.0.1-alpha.3
 
 ### Patch Changes
