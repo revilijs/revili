@@ -9,8 +9,8 @@
     "@vuepress/client": "2.0.0-beta.66",
     "@vuepress-reco/tailwindcss-config": "2.0.0-beta.67",
     "vue": "3.3.1",
-    "vuepress": "2.0.0-beta.66",
-    "vuepress-theme-reco": "2.0.0-beta.67"
+    "vuepress": "2.0.0-rc.9",
+    "vuepress-theme-reco": "2.0.0-rc.8"
   },
   "author": "reco_luan",
   "license": "MIT"
