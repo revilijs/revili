@@ -16,6 +16,7 @@
     "dev:default": "pnpm -r --parallel build --watch & pnpm -r --parallel copy --watch & pnpm dev:app",
     "dev:app": "node packages/core/dist/node/cli.js dev -d",
     "docs:deploy": "bash scripts/docs-deploy.sh",
+    "docs:build": "cd docs && npm run build",
     "lint": "eslint --fix src",
     "newbranch": "npx git newbranch",
     "release": "pnpm clean && pnpm build && bash scripts/release.sh",
