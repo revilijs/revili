@@ -1,5 +1,11 @@
 # revili
 
+## 0.0.1-alpha.6
+
+### Patch Changes
+
+- adaptive windows os
+
 ## 0.0.1-alpha.5
 
 ### Patch Changes

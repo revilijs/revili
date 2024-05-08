@@ -4,10 +4,11 @@
   "initialVersions": {
     "@revili/revili-kit-default": "0.0.1-alpha.4",
     "@revili/shared": "0.0.1-alpha.4",
-    "revili": "0.0.1-alpha.4"
+    "revili": "0.0.1-alpha.5"
   },
   "changesets": [
     "cold-cooks-smoke",
+    "funny-monkeys-cover",
     "green-kiwis-exist",
     "large-dots-arrive",
     "mighty-rabbits-talk",
