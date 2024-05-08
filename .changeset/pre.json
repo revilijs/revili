@@ -2,15 +2,16 @@
   "mode": "exit",
   "tag": "alpha",
   "initialVersions": {
-    "@revili/revili-kit-default": "0.0.1-alpha.3",
-    "@revili/shared": "0.0.1-alpha.3",
-    "revili": "0.0.1-alpha.3"
+    "@revili/revili-kit-default": "0.0.1-alpha.4",
+    "@revili/shared": "0.0.1-alpha.4",
+    "revili": "0.0.1-alpha.4"
   },
   "changesets": [
     "cold-cooks-smoke",
     "green-kiwis-exist",
     "large-dots-arrive",
     "mighty-rabbits-talk",
-    "proud-chairs-lay"
+    "proud-chairs-lay",
+    "silver-pens-double"
   ]
 }
