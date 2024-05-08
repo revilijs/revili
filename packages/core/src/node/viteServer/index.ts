@@ -1,4 +1,5 @@
 import path from 'node:path'
+import { pathToFileURL } from 'node:url'
 
 import {createServer} from 'vite'
 import {default as vuePlugin} from '@vitejs/plugin-vue'
@@ -23,7 +24,7 @@ export async function createViteServer(devMode: boolean) {
   const CLIENT_PATH = path.join(NODE_MODULES_PATH_OF_KIT, `./${activeKitName}/dist/client`);
   const ACTIVE_KIT_PATH = path.join(NODE_MODULES_PATH_OF_KIT, `./${activeKitName}/dist/node/index.js`);
 
-  const activeKit = (await import(ACTIVE_KIT_PATH)).default;
+  const activeKit = (await import(pathToFileURL(ACTIVE_KIT_PATH) as unknown as string)).default;
 
   const server = await createServer({
     configFile: false,
