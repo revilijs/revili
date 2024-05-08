@@ -1,5 +1,4 @@
 import { colors } from "./customColors.js";
-import path from "path";
 
 export const tailwindcssConfig = {
   darkMode: "class",

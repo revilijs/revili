@@ -1,4 +1,5 @@
 import fs from 'node:fs'
+import { pathToFileURL } from 'node:url'
 import { CACHE_FOLDER_PATH, CACHE_PACKAGED_FILE_PATH, CACHE_CONFIG_FILE_PATH } from '../alias.js'
 
 export type ReviliCache = {
@@ -26,7 +27,7 @@ export async function getReviliCache(): Promise<ReviliCache> {
     setReviliCache()
   }
 
-  const reviliCache = await import(CACHE_CONFIG_FILE_PATH)
+  const reviliCache = await import(pathToFileURL(CACHE_CONFIG_FILE_PATH) as unknown as string)
   return reviliCache.default
 }
 
