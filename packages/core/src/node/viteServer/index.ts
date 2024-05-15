@@ -14,26 +14,30 @@ import tailwindcssNesting from 'tailwindcss/nesting/index.js'
 import {tailwindcssConfig} from './tailwindcssConfig/index.js'
 import {reviliPlugin} from './plugins/vitePluginRevili.js'
 import {virtualModulePlugin} from './plugins/vitePluginVirtualModule.js'
-import { CACHE_FOLDER_PATH, USER_DIR } from '../alias.js'
+import { CACHE_FOLDER_PATH, CWD } from '../alias.js'
 import { getReviliCache } from '../command/handleCache.js'
 
-export async function createViteServer(devMode: boolean) {
+export async function createViteServer({ devMode, customKitDir }: { devMode: boolean, customKitDir: string }) {
   const { activeKit: activeKitName } = await getReviliCache();
 
-  const NODE_MODULES_PATH_OF_KIT = path.join(CACHE_FOLDER_PATH, `./node_modules`);
-  const CLIENT_PATH = path.join(NODE_MODULES_PATH_OF_KIT, `./${activeKitName}/dist/client`);
-  const ACTIVE_KIT_PATH = path.join(NODE_MODULES_PATH_OF_KIT, `./${activeKitName}/dist/node/index.js`);
+  // const NODE_MODULES_PATH_OF_KIT = path.join(CACHE_FOLDER_PATH, `./node_modules`);
+  const ACTIVE_KIT_DIR = path.join(CACHE_FOLDER_PATH, `./node_modules/${activeKitName}`);
+  const CLIENT_DIR = customKitDir
+    ? path.join(CWD, `${customKitDir}/client`)
+    : path.join(devMode ? CWD : ACTIVE_KIT_DIR, `./dist/client`);
+  const ACTIVE_KIT_ENTRY = customKitDir
+    ? path.join(CWD, `${customKitDir}/node/index.js`)
+    : path.join(devMode ? CWD : ACTIVE_KIT_DIR, `./dist/node/index.js`);
 
-  const activeKit = (await import(pathToFileURL(ACTIVE_KIT_PATH) as unknown as string)).default;
+  const activeKit = (await import(pathToFileURL(ACTIVE_KIT_ENTRY) as unknown as string)).default;
 
   const server = await createServer({
     configFile: false,
-    // WARNING: replace CLIENT_PATH by USER_DIR
-    root: CLIENT_PATH,
+    root: CLIENT_DIR,
     server: {
       port: 6789,
       fs: {
-        allow: [devMode ? USER_DIR : CLIENT_PATH],
+        allow: [CLIENT_DIR],
       },
     },
     css: {
@@ -51,14 +55,16 @@ export async function createViteServer(devMode: boolean) {
     plugins: [
       // @ts-ignore
       vuePlugin({
+        // @ts-ignore
         babel: {
+      // @ts-ignore
           plugins: ['@babel/plugin-proposal-optional-chaining', '@babel/plugin-proposal-nullish-coalescing-operator'],
         },
       }),
       // @ts-ignore
       vueJsxPlugin(),
       virtualModulePlugin('kit-config', activeKit),
-      reviliPlugin(CLIENT_PATH),
+      reviliPlugin(CLIENT_DIR),
       activeKit.vitePlugin()
     ],
     /**
