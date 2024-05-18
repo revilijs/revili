@@ -1,9 +1,9 @@
 import {defineKit, useServerSocket} from '@revili/shared/node'
-import type {DefineKitReturn} from '@revili/shared/node'
+import type {Kit} from '@revili/shared/node'
 
 import { USER_PATH } from '../constants/index.js'
 
-const defaultPlugin: DefineKitReturn = defineKit({
+const defaultPlugin: Kit = defineKit({
   name: 'revili-kit-default',
 
   registerService: server => {

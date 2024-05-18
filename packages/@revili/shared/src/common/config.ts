@@ -1,4 +1,4 @@
-import type {DefineKitReturn} from '../node/index.js'
+import type { Kit } from '../node/index.js'
 
 export interface SidebarItem {
   title: string
@@ -13,11 +13,11 @@ export interface LayoutOption {
   icon?: string
 }
 
-export interface AppOptions<T = DefineKitReturn> {
+export interface AppOptions<T = Kit> {
   devMode: boolean
   layoutOptions: LayoutOption[]
   plugins: Array<T>
   [prop: string]: any
 }
 
-export type AppConfig = AppOptions<DefineKitReturn>
+export type AppConfig = AppOptions<Kit>

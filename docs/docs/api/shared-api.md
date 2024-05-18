@@ -14,9 +14,9 @@ title: 共享 API
 import { join } from 'node:path'
 import { defineKit, useServerSocket } from '@spider/sili-shared/node'
 
-import type { DefineKitReturn } from '@spider/sili-shared/node'
+import type { Kit } from '@spider/sili-shared/node'
 
-const demoKit: DefineKitReturn = defineKit({
+const demoKit: Kit = defineKit({
   // 插件名称
   name: 'sili-plugin-demo',
 
@@ -42,9 +42,9 @@ export default demoKit
 
 ```ts
 import {defineKit, useServerSocket} from '@revili/shared/node'
-import type {DefineKitReturn} from '@revili/shared/node'
+import type {Kit} from '@revili/shared/node'
 
-const examplePlugin: DefineKitReturn = defineKit({
+const examplePlugin: Kit = defineKit({
   name: 'revili-kit-example',
 
   registerService: server => {

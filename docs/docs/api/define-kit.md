@@ -12,9 +12,9 @@ title: defineKit
 import { join } from 'node:path'
 import { defineKit, useServerSocket } from '@spider/sili-shared/node'
 
-import type { DefineKitReturn } from '@spider/sili-shared/node'
+import type { Kit } from '@spider/sili-shared/node'
 
-const demoKit: DefineKitReturn = defineKit({
+const demoKit: Kit = defineKit({
   // 插件名称
   name: 'sili-plugin-demo',
 

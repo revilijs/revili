@@ -1,4 +1,4 @@
-import type {DefineKitReturn} from '@revili/shared/node'
+import type {Kit} from '@revili/shared/node'
 export interface SidebarItem {
   title: string
   route: string
@@ -18,4 +18,4 @@ export interface AppOptions<T = string> {
   [prop: string]: any
 }
 
-export type AppConfig = AppOptions<DefineKitReturn>
+export type AppConfig = AppOptions<Kit>
