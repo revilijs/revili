@@ -1,5 +1,11 @@
 # @revili/shared
 
+## 0.0.1-alpha.6
+
+### Patch Changes
+
+- add command to initialize kit
+
 ## 0.0.1-alpha.5
 
 ### Patch Changes

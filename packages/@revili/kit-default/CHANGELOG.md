@@ -1,5 +1,13 @@
 # @revili/revili-kit-default
 
+## 0.0.1-alpha.6
+
+### Patch Changes
+
+- add command to initialize kit
+- Updated dependencies
+  - revili@0.0.1-alpha.8
+
 ## 0.0.1-alpha.5
 
 ### Patch Changes
