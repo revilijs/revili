@@ -6,7 +6,7 @@ export function createStartCommand(program: CAC) {
     .command('start', 'Starting the service')
     .option('--dev', 'Open develop mode')
     .option('--dir <dir>', 'Specify the entry file path for kit')
-    .action(async ({ dev: devMode = false, dir: customKitDir }) => {
-      await createViteServer({ devMode, customKitDir })
+    .action(async ({ dir }) => {
+      await createViteServer(dir)
     })
 }
