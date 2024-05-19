@@ -1,13 +1,13 @@
 export const series = {
-  '/docs/guide/': [
+  '/zh/docs/guide/': [
     {
       text: '指南',
       children: ['introduction', 'getting-started', 'kit', 'revili-config'],
     },
   ],
-  '/docs/kit-store/': [
+  '/zh/docs/kit-store/': [
     {
-      text: '官方插件',
+      text: '官方套件',
       children: ['@revili/revili-kit-default'],
     },
   ],
