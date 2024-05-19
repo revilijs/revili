@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useClientSocket } from '@revili/shared/client'
+import { useClientSocket } from 'revili/client'
 
 import { USER_PATH } from '../constants/index.js'
 

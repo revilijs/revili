@@ -1,5 +1,5 @@
-import {defineKit, useServerSocket} from '@revili/shared/node'
-import type {Kit} from '@revili/shared/node'
+import {defineKit, useServerSocket} from 'revili/node'
+import type {Kit} from 'revili/node'
 
 import { USER_PATH } from '../constants/index.js'
 

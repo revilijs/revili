@@ -6,7 +6,7 @@ export const reviliPlugin = (clientPath: string): Plugin => ({
   name: 'vite-plugin-revili',
 
   configureServer(server) {
-    // todd 自动优化 config 文件
+    // todo 自动优化 config 文件
     // if (configPath) {
     //   server.watcher.add(configPath)
     // }

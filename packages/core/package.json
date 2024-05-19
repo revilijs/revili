@@ -13,12 +13,16 @@
   ],
   "exports": {
     "./client": {
-      "types": "./dist/shared/client/index.d.ts",
-      "default": "./dist/shared/client/index.js"
+      "types": "./dist/client/index.d.ts",
+      "default": "./dist/client/index.js"
     },
     "./node": {
-      "types": "./dist/shared/node/index.d.ts",
-      "default": "./dist/shared/node/index.js"
+      "types": "./dist/node/index.d.ts",
+      "default": "./dist/node/index.js"
+    },
+    "./common": {
+      "types": "./dist/common/index.d.ts",
+      "default": "./dist/common/index.js"
     }
   },
   "scripts": {
@@ -36,7 +40,7 @@
     "vite",
     "integration tool"
   ],
-  "author": "luanhewei",
+  "author": "reco_luan",
   "license": "ISC",
   "publishConfig": {
     "access": "public"

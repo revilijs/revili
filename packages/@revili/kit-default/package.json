@@ -18,13 +18,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "luanhewei",
+  "author": "reco_luan",
   "license": "ISC",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@revili/shared": "workspace:*",
+    "revili": "workspace:*",
     "vue": "3.2.45",
     "naive-ui": "2.34.2",
     "vue-router": "^4.1.6"

@@ -62,12 +62,12 @@ importers:
 
   packages/@revili/kit-default:
     dependencies:
-      '@revili/shared':
-        specifier: workspace:*
-        version: link:../shared
       naive-ui:
         specifier: 2.34.2
         version: 2.34.2(vue@3.2.45)
+      revili:
+        specifier: workspace:*
+        version: link:../../core
       vue:
         specifier: 3.2.45
         version: 3.2.45

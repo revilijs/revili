@@ -7,17 +7,17 @@ import type { UserConfig } from 'vite'
 import {default as vuePlugin} from '@vitejs/plugin-vue'
 import {default as vueJsxPlugin} from '@vitejs/plugin-vue-jsx'
 
-import postcssImport from 'postcss-import'
 import tailwindcss from 'tailwindcss'
-import autoprefixer from 'autoprefixer'
 import postcssEach from 'postcss-each'
+import autoprefixer from 'autoprefixer'
+import postcssImport from 'postcss-import'
 import tailwindcssNesting from 'tailwindcss/nesting/index.js'
 
-import {tailwindcssConfig} from './tailwindcssConfig/index.js'
-import {reviliPlugin} from './plugins/vitePluginRevili.js'
-import {virtualModulePlugin} from './plugins/vitePluginVirtualModule.js'
 import { CACHE_FOLDER_PATH, CWD } from '../alias.js'
+import {reviliPlugin} from './plugins/vitePluginRevili.js'
 import { getReviliCache } from '../command/handleCache.js'
+import {tailwindcssConfig} from './tailwindcssConfig/index.js'
+import {virtualModulePlugin} from './plugins/vitePluginVirtualModule.js'
 
 import type { Kit } from '@revili/shared/node'
 

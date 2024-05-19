@@ -1,23 +1,9 @@
-import type { Kit } from '../node/index.js'
+type Plugin = Record<string, any>
 
-export interface SidebarItem {
-  title: string
-  route: string
-  icon?: string
-}
-
-export interface LayoutOption {
-  title: string
-  route: string
-  children: SidebarItem[]
-  icon?: string
-}
-
-export interface AppOptions<T = Kit> {
+export interface AppOptions<T> {
   devMode: boolean
-  layoutOptions: LayoutOption[]
   plugins: Array<T>
   [prop: string]: any
 }
 
-export type AppConfig = AppOptions<Kit>
+export type AppConfig = AppOptions<Plugin>
