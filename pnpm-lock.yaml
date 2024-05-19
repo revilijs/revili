@@ -110,9 +110,6 @@ importers:
       '@babel/plugin-transform-optional-chaining':
         specifier: 7.24.5
         version: 7.24.5(@babel/core@7.24.5)
-      '@revili/revili-kit-default':
-        specifier: workspace:*
-        version: link:../@revili/kit-default
       '@revili/shared':
         specifier: workspace:*
         version: link:../@revili/shared
