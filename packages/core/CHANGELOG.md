@@ -1,5 +1,13 @@
 # revili
 
+## 0.0.1-alpha.7
+
+### Patch Changes
+
+- optimize kit debugging
+- Updated dependencies
+  - @revili/shared@0.0.1-alpha.5
+
 ## 0.0.1-alpha.6
 
 ### Patch Changes
