@@ -1,22 +1,22 @@
 import {defaultConfig} from './defaultConfig.js'
 import {resolveUserConfig} from './resolveUserConfigConventionalPath.js'
-import type {AppConfig } from '@revili/shared/common'
+import type {ReviliConfig } from '@revili/shared/common'
 
-export async function getMergedConfig(): Promise<AppConfig> {
+export async function getMergedConfig(): Promise<ReviliConfig> {
   const userConfig = await resolveUserConfig()
 
   const {plugins: userConfigPlugins = []} = userConfig
   const {plugins: defaultConfigPlugins} = defaultConfig
 
-  const appConfig: AppConfig = {
+  const reviliConfig: ReviliConfig = {
     ...defaultConfig,
     ...userConfig,
     plugins: [...defaultConfigPlugins, ...userConfigPlugins],
   }
 
   const resolvedConfig = {
-    ...appConfig,
-  } as unknown as AppConfig
+    ...reviliConfig,
+  } as unknown as ReviliConfig
 
   return resolvedConfig
 }

@@ -64,7 +64,3 @@ revili ls
 # or
 revili list
 ```
-
-## Kit
-
-Kit is a fully functional revili extension package, that includes commands, client and server of GUI. Kit are independent of each other.

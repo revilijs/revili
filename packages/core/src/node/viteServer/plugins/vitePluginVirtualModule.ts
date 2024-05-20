@@ -1,5 +1,5 @@
 import type {Plugin} from 'vite'
-import {AppConfig} from '@revili/shared/common'
+import {ReviliConfig} from '@revili/shared/common'
 import { toLowerCamelCase } from '../../utils/index.js'
 
 export const virtualModulePlugin = (moduleKey: string, moduleValue: any): Plugin => {

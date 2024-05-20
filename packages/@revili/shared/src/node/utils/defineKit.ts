@@ -1,13 +1,13 @@
 import { CAC } from 'cac'
 import type { ViteDevServer, Plugin, UserConfig } from 'vite'
-import type { AppConfig } from '../../common/config.js'
+import type { ReviliConfig } from '../../common/config.js'
 
 export interface KitOptions {
   name: string
-  webFramework?: 'vue' | 'react'
+  webFramework?:  'vue'
   viteOptions?: UserConfig
   registerService?: (server: ViteDevServer) => void
-  registerCommand: (params: {program: CAC; appConfig?: AppConfig}) => void
+  registerCommand: (params: {program: CAC; reviliConfig?: ReviliConfig}) => void
 }
 
 export type Kit = Omit<KitOptions, 'registerService'> & {

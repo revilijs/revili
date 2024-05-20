@@ -1,6 +1,6 @@
-import type {AppConfig} from '@revili/shared/common'
+import type {ReviliConfig} from '@revili/shared/common'
 
-export const defaultConfig: AppConfig = {
+export const defaultConfig: ReviliConfig = {
   devMode: false,
   plugins: [],
 }

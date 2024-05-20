@@ -6,7 +6,7 @@
 <br/>
 
 # revili
-A command and GUI integration tool based on vite.
+A command and GUI integration tool based on vite. Please refer to the [documentation](https://revili.recoluan.com/).
 
 ## Try
 
@@ -66,7 +66,3 @@ revili ls
 # or
 revili list
 ```
-
-## Kit
-
-Kit is a fully functional revili extension package, that includes commands, client and server of GUI. Kit are independent of each other.
