@@ -1,6 +1,3 @@
-import path from 'node:path'
-import { pathToFileURL } from 'node:url'
-
 import { mergeConfig } from 'vite'
 import type { UserConfig } from 'vite'
 
@@ -13,27 +10,18 @@ import autoprefixer from 'autoprefixer'
 import postcssImport from 'postcss-import'
 import tailwindcssNesting from 'tailwindcss/nesting/index.js'
 
-import { CACHE_FOLDER_PATH, CWD } from '../alias.js'
 import {reviliPlugin} from './plugins/vitePluginRevili.js'
-import { getReviliCache } from '../command/handleCache.js'
 import {tailwindcssConfig} from './tailwindcssConfig/index.js'
 import {virtualModulePlugin} from './plugins/vitePluginVirtualModule.js'
 
-import type { Kit } from '@revili/shared/node'
+import { getActiveKit } from '../utils/index.js'
 
 export async function resolveViteConfig(customKitDir: string): Promise<UserConfig> {
-  const { activeKit: activeKitName } = await getReviliCache();
+  const { activeKit, CLIENT_DIR } = await getActiveKit(customKitDir)
 
-  // const NODE_MODULES_PATH_OF_KIT = path.join(CACHE_FOLDER_PATH, `./node_modules`);
-  const ACTIVE_KIT_DIR = path.join(CACHE_FOLDER_PATH, `./node_modules/${activeKitName}`);
-  const CLIENT_DIR = customKitDir
-    ? path.join(CWD, `${customKitDir}/client`)
-    : path.join(ACTIVE_KIT_DIR, `./dist/client`);
-  const ACTIVE_KIT_ENTRY = customKitDir
-    ? path.join(CWD, `${customKitDir}/node/index.js`)
-    : path.join(ACTIVE_KIT_DIR, `./dist/node/index.js`);
-
-  const activeKit = (await import(pathToFileURL(ACTIVE_KIT_ENTRY) as unknown as string)).default as Kit;
+  if (!activeKit) {
+    process.exit(1)
+  }
 
   const vitePlugins = [
     virtualModulePlugin('kit-config', activeKit),

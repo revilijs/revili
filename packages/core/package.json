@@ -20,9 +20,9 @@
       "types": "./dist/node/index.d.ts",
       "default": "./dist/node/index.js"
     },
-    "./common": {
-      "types": "./dist/common/index.d.ts",
-      "default": "./dist/common/index.js"
+    "./shared": {
+      "types": "./dist/shared/index.d.ts",
+      "default": "./dist/shared/index.js"
     }
   },
   "scripts": {

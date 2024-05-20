@@ -1,5 +1,6 @@
 import { chalk } from "@revili/shared/node";
 
+export * from './getActiveKit.js'
 export * from './childProcess.js'
 
 export function toLowerCamelCase(str: string): string {

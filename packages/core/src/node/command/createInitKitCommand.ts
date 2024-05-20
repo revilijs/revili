@@ -10,7 +10,8 @@ import { consoleUtil } from '../utils/index.js'
 export function createInitKitCommand(program: CAC) {
   program
     .command('create:kit', 'Use kit')
-    .action(async kit => {
+    .allowUnknownOptions()
+    .action(async () => {
       const { kitName, webFramework } = await handleInquirer()
       const gitScope = 'revilijs'
       const gitRepo = `revili-kit-demo-${webFramework}`

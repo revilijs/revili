@@ -20,10 +20,13 @@ const defaultPlugin: Kit = defineKit({
   },
 
   registerCommand: ({program}) => {
-    program.command('path').action(() => {
-      const userPath = getUserPath()
-      console.log(`[revili] user path: ${userPath}`)
-    })
+    program
+      .command('path')
+      .allowUnknownOptions()
+      .action(() => {
+        const userPath = getUserPath()
+        console.log(`[revili] user path: ${userPath}`)
+      })
   },
 })
 

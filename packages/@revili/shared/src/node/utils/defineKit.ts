@@ -7,7 +7,7 @@ export interface KitOptions {
   webFramework?: 'vue' | 'react'
   viteOptions?: UserConfig
   registerService?: (server: ViteDevServer) => void
-  registerCommand: (params: {program: CAC; appConfig: AppConfig}) => void
+  registerCommand: (params: {program: CAC; appConfig?: AppConfig}) => void
 }
 
 export type Kit = Omit<KitOptions, 'registerService'> & {

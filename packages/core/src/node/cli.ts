@@ -12,16 +12,15 @@ import {
   createInitKitCommand
 } from './command/index.js'
 
-/**
- * todo ：
- * 1. 通过 process.argv 判断用户是否增加了参数 --dir
- * 2. 如果带了参数，说明是本地套件，直接通过 dir 值来获取套件实例
- * 3. 套件实例传递给 createKitCommands、createStartCommand
- * 4. 增加一个 getCurrentKit 方法，判断获取本地 kit 或 cache kit
- */
+let customKitDir = ''
 
 const args = process.argv.slice(2);
-console.log(args);
+const lastArg = args[args.length - 1]
+const matches = lastArg.match(/^--dir=(.+)/)
+
+if (matches) {
+  customKitDir = matches[1]
+}
 
 // import {getMergedConfig} from './config/getMergedConfig.js'
 
@@ -37,9 +36,6 @@ console.log(args);
     createListCommand(program)
     createInitKitCommand(program)
 
-    const reviliCache = await getReviliCache()
-    if (reviliCache.activeKit) {
-      await createKitCommands(program)
-    }
+    await createKitCommands(program, customKitDir)
   })
 })()
