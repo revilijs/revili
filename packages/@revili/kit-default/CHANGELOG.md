@@ -1,5 +1,13 @@
 # @revili/revili-kit-default
 
+## 0.0.1-alpha.7
+
+### Patch Changes
+
+- optimize local kit debugging
+- Updated dependencies
+  - revili@0.0.1-alpha.9
+
 ## 0.0.1-alpha.6
 
 ### Patch Changes

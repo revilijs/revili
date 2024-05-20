@@ -1,5 +1,13 @@
 # revili
 
+## 0.0.1-alpha.9
+
+### Patch Changes
+
+- optimize local kit debugging
+- Updated dependencies
+  - @revili/shared@0.0.1-alpha.7
+
 ## 0.0.1-alpha.8
 
 ### Patch Changes

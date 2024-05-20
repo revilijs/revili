@@ -1,5 +1,11 @@
 # @revili/shared
 
+## 0.0.1-alpha.7
+
+### Patch Changes
+
+- optimize local kit debugging
+
 ## 0.0.1-alpha.6
 
 ### Patch Changes
