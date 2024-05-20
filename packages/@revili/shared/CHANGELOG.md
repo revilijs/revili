@@ -1,5 +1,11 @@
 # @revili/shared
 
+## 0.0.1-alpha.8
+
+### Patch Changes
+
+- rename kit-default to kit-demo
+
 ## 0.0.1-alpha.7
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # revili
 
+## 0.0.1-alpha.10
+
+### Patch Changes
+
+- rename kit-default to kit-demo
+- Updated dependencies
+  - @revili/shared@0.0.1-alpha.8
+
 ## 0.0.1-alpha.9
 
 ### Patch Changes
