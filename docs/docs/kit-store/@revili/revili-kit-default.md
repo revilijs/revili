@@ -1,3 +1,3 @@
 ---
-title: '@revili/revili-kit-default'
+title: '@revili/revili-kit-demo'
 ---

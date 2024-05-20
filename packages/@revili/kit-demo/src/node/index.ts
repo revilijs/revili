@@ -4,7 +4,7 @@ import type {Kit} from 'revili/node'
 import { USER_PATH } from '../constants/index.js'
 
 const defaultPlugin: Kit = defineKit({
-  name: 'revili-kit-default',
+  name: 'revili-kit-demo',
 
   registerService: server => {
     const socket = useServerSocket(server)

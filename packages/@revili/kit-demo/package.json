@@ -1,5 +1,5 @@
 {
-  "name": "@revili/revili-kit-default",
+  "name": "@revili/revili-kit-demo",
   "version": "0.0.1-alpha.7",
   "description": "",
   "main": "dist/node/index.js",

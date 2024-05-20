@@ -10,12 +10,12 @@ title: 快速开始
 
 ```bash
 npm install revili@next -g
-revili add @revili/revili-kit-default@next
+revili add @revili/revili-kit-demo@next
 
 # command 'start' is registered from revili
 revili start
 
-# command 'path' is registered from @revili/revili-kit-default
+# command 'path' is registered from @revili/revili-kit-demo
 revili path
 ```
 
@@ -26,7 +26,7 @@ revili path
 Install the kit.
 
 ```bash
-revili add @revili/revili-kit-default
+revili add @revili/revili-kit-demo
 ```
 
 ### remove
@@ -34,7 +34,7 @@ revili add @revili/revili-kit-default
 Remove the kit.
 
 ```bash
-revili remove @revili/revili-kit-default
+revili remove @revili/revili-kit-demo
 ```
 
 ### use
@@ -42,7 +42,7 @@ revili remove @revili/revili-kit-default
 Switch the kit.
 
 ```bash
-revili use @revili/revili-kit-default
+revili use @revili/revili-kit-demo
 ```
 
 ### start
@@ -50,7 +50,7 @@ revili use @revili/revili-kit-default
 Start the local services provided by the kit.
 
 ```bash
-revili use @revili/revili-kit-default
+revili use @revili/revili-kit-demo
 revili start
 ```
 

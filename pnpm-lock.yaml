@@ -60,7 +60,7 @@ importers:
         specifier: 4.9.5
         version: 4.9.5
 
-  packages/@revili/kit-default:
+  packages/@revili/kit-demo:
     dependencies:
       naive-ui:
         specifier: 2.34.2
@@ -2010,8 +2010,8 @@ packages:
       possible-typed-array-names: 1.0.0
     dev: true
 
-  /axios@1.6.8:
-    resolution: {integrity: sha512-v/ZHtJDU39mDpyBoFVkETcd/uNdxrWRrg3bKpOKzXFA6Bvqopts6ALSMU3y6ijYxbw2B+wPrIv46egTzJXCLGQ==}
+  /axios@1.7.1:
+    resolution: {integrity: sha512-+LV37nQcd1EpFalkXksWNBiA17NZ5m5/WspmHGmZmdx1qBOg/VNq/c4eRJiA9VQQHBOs+N0ZhhdU10h2TyNK7Q==}
     dependencies:
       follow-redirects: 1.15.6
       form-data: 4.0.0
@@ -3841,7 +3841,7 @@ packages:
     resolution: {integrity: sha512-WbWedtix56fVnA0H2x2+fC2SYFcLatplbTa875DSlPe87zNNJqdZzHYTEiFUvcUHwAjMUDINShTrnthm/fZXww==}
     engines: {node: '>=20.x'}
     dependencies:
-      axios: 1.6.8
+      axios: 1.7.1
       cross-spawn: 7.0.3
       shelljs: 0.8.5
       tar: 7.1.0
