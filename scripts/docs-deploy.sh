@@ -11,7 +11,7 @@ git commit -m 'docs: update docs'
 # git push -f git@git.coding.net:recoluan/vuepress-theme-reco-doc.git master
 
 git remote remove origin
-git remote add origin git@github.com:recoluan/revili.git
+git remote add origin git@github.com:revilijs/revili.git
 git remote -v
 git push origin master:pages-code -f
 
