@@ -4,10 +4,12 @@ title: 介绍
 
 ## 简介
 
-Revili is a command and GUI integration tool based on vite.
+`Revili` 是一个基于 `Vite` 的命令和图形用户界面集成工具，也可以称之为快速组装脚手架的脚手架。
 
-Revili allows you to expand functionality through kit. Kit is a fully functional revili extension package, that includes commands, client and server of GUI. Kit are independent of each other.
+`Revili` 通过套件 Kit 将一系列相关的能力组合在一起，形成一个能力集合，每个套件是相互独立的。所以 `Revili` 的初衷就是让 Web 前端开发者将自己的经验和想法沉淀成规范的能力（开发套件），并且还可以将这些能力分享出去（发布套件）。
 
-## 脚手架工作流程
+套件 Kit 包含的能力分为两部分，自定义命令 和 GUI。两者本身是独立的，不相互依赖，可以根据用户习惯只开发其中一种能力；同时也可以作为相通功能的不同表现形式，让用户根据自己的习惯或兴趣去选择使用方式。
 
-<img src="./images/revili-flow-svg.svg" width="500" />
+## 工作流程
+
+<img src="./images/revili-flow-svg.png" width="700" />

@@ -6,24 +6,24 @@ title: 快速开始
 
 - [Node.js v18 & v20+](https://nodejs.org/en/)
 
-## Try
+## 尝试
 
 ```bash
 npm install revili@next -g
 revili add @revili/revili-kit-demo@next
 
-# command 'start' is registered from revili
+# 'start' 命令是 revili 内置的
 revili start
 
-# command 'path' is registered from @revili/revili-kit-demo
+# 'path' 命令是从套件 @revili/revili-kit-demo
 revili path
 ```
 
-## Built-in commands
+## 内置命令
 
 ### add
 
-Install the kit.
+安装并激活套件。
 
 ```bash
 revili add @revili/revili-kit-demo
@@ -31,7 +31,7 @@ revili add @revili/revili-kit-demo
 
 ### remove
 
-Remove the kit.
+移除套件。
 
 ```bash
 revili remove @revili/revili-kit-demo
@@ -39,7 +39,7 @@ revili remove @revili/revili-kit-demo
 
 ### use
 
-Switch the kit.
+激活套件。
 
 ```bash
 revili use @revili/revili-kit-demo
@@ -47,7 +47,7 @@ revili use @revili/revili-kit-demo
 
 ### start
 
-Start the local services provided by the kit.
+启动套件提供的 GUI 服务。
 
 ```bash
 revili use @revili/revili-kit-demo
@@ -56,11 +56,11 @@ revili start
 
 ### ls/list
 
-Check the added kits.
+列出安装过的套件。
 
 ```bash
 revili ls
 
-# or
+# 或者
 revili list
 ```

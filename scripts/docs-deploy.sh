@@ -1,4 +1,5 @@
 cd docs
+pnpm install
 pnpm build
 cd .vuepress/dist
 

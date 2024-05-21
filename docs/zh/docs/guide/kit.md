@@ -3,13 +3,6 @@ title: 开发套件
 ---
 
 ::: tip
-Revili 允许您通过套件扩展功能。套件 KIT 是一个功能齐全的 Revili 扩展包，包括命令、客户端和服务器的图形用户界面。套件 KIT是相互独立的。
-
-**套件示例：**
-1. [revili-kit-demo-vue](https://github.com/revilijs/revili-kit-demo-vue)
-:::
-
-::: warning
 如果您的套件要发布到 npm，请参考 **标准套件**；如果您的套件仅用于自己的项目中，请参考 **本地套件**。
 :::
 

@@ -1,8 +1,8 @@
 ---
-title: 快速开始
+title: Getting Started
 ---
 
-## 依赖环境
+## Environment
 
 - [Node.js v18 & v20+](https://nodejs.org/en/)
 
@@ -12,7 +12,7 @@ title: 快速开始
 npm install revili@next -g
 revili add @revili/revili-kit-demo@next
 
-# command 'start' is registered from revili
+# command 'start' is build-in from revili
 revili start
 
 # command 'path' is registered from @revili/revili-kit-demo

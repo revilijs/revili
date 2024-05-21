@@ -1,21 +1,14 @@
 ---
-title: 开发套件
+title: Develop Kit
 ---
 
 ::: tip
-Revili 允许您通过套件扩展功能。套件 KIT 是一个功能齐全的 Revili 扩展包，包括命令、客户端和服务器的图形用户界面。套件 KIT是相互独立的。
-
-**套件示例：**
-1. [revili-kit-demo-vue](https://github.com/revilijs/revili-kit-demo-vue)
+If your kit is to be published to npm, please refer to **Standard Kit**; if your kit is only used in your own project, please refer to **Local Kit**.
 :::
 
-::: warning
-如果您的套件要发布到 npm，请参考 **标准套件**；如果您的套件仅用于自己的项目中，请参考 **本地套件**。
-:::
+## Standard Kit
 
-## 标准套件
-
-### 初始化
+### Initialization
 
 ```
 ├── dist
@@ -37,7 +30,7 @@ npm install revili@next -g
 revili create:kit
 ```
 
-### 开发
+### Development
 
 套件的开发分为两部分，**自定义命令** 和 **GUI**。
 
@@ -224,7 +217,7 @@ npm run build
 npm run publish
 ```
 
-## 本地套件
+## Local Kit
 
 ### 初始化
 

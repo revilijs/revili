@@ -5,7 +5,7 @@ title: Node API
 ## defineKit
 
 - 类型：`(options: KitOptions) => Kit`
-- 描述：`Revili` 是一款脚手架的模块化方案，可以通过 `defineKit` 生成一个插件实例，对脚手架进行能力增强。
+- 描述：对套件进行声明，用来注册自定义命令和 GUI 的本地通信服务等。
 - 案例：
   ```ts
   import { defineKit, useServerSocket, type Kit } from 'revili/node'

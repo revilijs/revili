@@ -4,31 +4,31 @@ title: Node API
 
 ## defineKit
 
-- 类型：`(options: KitOptions) => Kit`
-- 描述：`Revili` 是一款脚手架的模块化方案，可以通过 `defineKit` 生成一个插件实例，对脚手架进行能力增强。
-- 案例：
+- Type: `(options: KitOptions) => Kit`
+- Description: Declare the suite to register custom commands and GUI's local communication service, etc.
+- Example:
   ```ts
   import { defineKit, useServerSocket, type Kit } from 'revili/node'
 
   const demoKit: Kit = defineKit({
-    // 插件名称
+    // The name of the kit
     name: 'revili-kit-demo',
 
-    // GUI 客户端开发框架，默认 vue，后面会拓展 react、servlet、web component 等
+    // The GUI client development framework, default vue, and will expand react, servlet, web component, etc.
     webFramework: 'vue'
 
-    // 参考 https://vitejs.dev/config/
+    // Refer to https://vitejs.dev/config/
     viteOptions: {}
 
-    // 注册可以和 GUI 通信的服务
+    // Register for services that can communicate with GUI
     registerService(server) {
       // ...
     },
 
-    // 注册 command 命令
+    // Register the command
     registerCommand({ program }) {
       program.command('test').action(() => {
-        console.log('你触发了 test 命令！')
+        console.log('You triggered the test command!！')
       })
     },
   })
@@ -50,9 +50,9 @@ interface KitOptions {
 
 ## useServerSocket
 
-- 类型：`(server: ViteDevServer) => WebSocketServer | null`
-- 描述：服务端与客户端的通信 API。
-- 案例：
+- Type: `(server: ViteDevServer) => WebSocketServer | null`
+- Description: The server communicates with the client.
+- Example:
   ```ts
   import {defineKit, useServerSocket, type Kit} from 'revili/node'
 

@@ -1,12 +1,12 @@
 ---
-title: 客户端 API
+title: Client API
 ---
 
 ## useClientSocket
 
-- 类型：`{ on: (event: string, handler: (data: any) => void) => void; send: (event: string, data: any) => void; }`
-- 描述：客户端与服务端的通信 API。
-- 案例：
+- Type: `{ on: (event: string, handler: (data: any) => void) => void; send: (event: string, data: any) => void; }`
+- Description: The client communicates with the server.
+- Example:
 
 ```ts
 import { useClientSocket } from 'revili/client'

@@ -15,7 +15,7 @@ bannerBrand:
   bgImage: '/bg.svg'
   title: Revili
   description: A command and GUI integration tool based on vite.
-  tagline: Revili allows you to expand functionality through kit. Kit is a fully functional revili extension package, that includes commands, client and server of GUI. Kit are independent of each other.
+  tagline: Revili can also be referred to as a Cli tool for quickly assembling Cli tool. Revili combines a series of related capabilities into a capability set through `Kit`, and each kit is independent of each other. 
   buttons:
     - { text: Guide, link: '/docs/guide/introduction.html' }
     - { text: Getting Started, link: '/docs/guide/getting-started.html', type: 'plain' }
