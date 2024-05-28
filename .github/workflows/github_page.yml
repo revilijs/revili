@@ -24,7 +24,7 @@ jobs:
         run: npm install
 
       - name: Build
-        run: npm run build
+        run: npx vuepress build .
 
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2
