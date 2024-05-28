@@ -25,12 +25,17 @@ jobs:
 
       - name: Install
         run: cd docs && npm install
+        working-directory: ./docs
 
       - name: ls
         run: ls
 
       - name: Build
         run: vuepress build .
+        working-directory: ./docs
+
+      - name: ls
+        run: ls
 
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2
