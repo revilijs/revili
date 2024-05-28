@@ -24,7 +24,7 @@ jobs:
         run: ls
 
       - name: Install
-        run: npm install
+        run: cd docs && npm install
 
       - name: ls
         run: ls
