@@ -17,14 +17,11 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: Enter Directory
-        run: cd docs
-
       - name: Install
-        run: npm install
+        run: cd docs && npm install
 
       - name: Build
-        run: npx vuepress build .
+        run: cd docs && vuepress build .
 
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2
