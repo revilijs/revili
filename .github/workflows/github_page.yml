@@ -11,36 +11,45 @@ jobs:
       pages: write
       id-token: write
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
         with:
           node-version: 20
           cache: npm
 
-      - name: Enter Directory
-        run: cd docs
+      - name: Verify and navigate to docs directory
+        run: |
+          if [ -d "./docs" ]; then
+            echo "Directory exists"
+            cd docs
+          else
+            echo "Directory does not exist"
+            exit 1
+          fi
 
-      - name: ls
-        run: ls
-
-      - name: Install
+      - name: Install dependencies
         run: npm install
         working-directory: ./docs
 
-      - name: ls
-        run: ls
-
-      - name: Build
-        run: vuepress build .
+      - name: List files in docs directory after install
+        run: ls -la
         working-directory: ./docs
 
-      - name: ls
-        run: ls
+      - name: Build the VuePress site
+        run: npx vuepress build .
+        working-directory: ./docs
+
+      - name: List built files
+        run: ls -la
+        working-directory: ./docs/.vuepress/dist
 
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2
         with:
           target_branch: pages-code
-          build_dir: .vuepress/dist
+          build_dir: docs/.vuepress/dist
         env:
           GITHUB_TOKEN: ${{ secrets.PAGE_TOKEN }}
