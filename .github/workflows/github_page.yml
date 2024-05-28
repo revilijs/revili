@@ -24,7 +24,7 @@ jobs:
         run: ls
 
       - name: Install
-        run: cd docs && npm install
+        run: npm install
         working-directory: ./docs
 
       - name: ls
