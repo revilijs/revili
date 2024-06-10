@@ -1,9 +1,5 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 importers:
 
   .:
@@ -128,9 +124,6 @@ importers:
       gitly:
         specifier: 3.0.0
         version: 3.0.0
-      naive-ui:
-        specifier: 2.34.2
-        version: 2.34.2(vue@3.2.45)
       postcss:
         specifier: 8.4.21
         version: 8.4.21
@@ -149,12 +142,6 @@ importers:
       vite-plugin-babel:
         specifier: 1.2.0
         version: 1.2.0(@babel/core@7.24.5)(vite@5.2.11)
-      vue:
-        specifier: 3.2.45
-        version: 3.2.45
-      vue-router:
-        specifier: ^4.1.6
-        version: 4.3.2(vue@3.2.45)
 
 packages:
 
@@ -7190,3 +7177,7 @@ packages:
       synchronous-promise: 2.0.17
       toposort: 2.0.2
     dev: true
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
