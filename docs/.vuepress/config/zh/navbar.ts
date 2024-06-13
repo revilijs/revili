@@ -13,5 +13,5 @@ export const navbar = [
       }
     ]
   },
-  { text: '套件市场', link: '/zh/docs/kit-store/@revili/revili-kit-default' },
+  { text: '套件市场', link: '/zh/docs/others/kit-store' },
 ]

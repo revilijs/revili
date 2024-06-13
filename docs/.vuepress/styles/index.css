@@ -1,3 +1,9 @@
 .banner-brand-wrapper .hero-content img {
   @apply md:w-80 w-64;
 }
+
+body {
+  .works__container {
+    background-image: radial-gradient(rgba(93, 103, 232, 0.2) 10%, rgba(255, 255, 255, 0) 60%);
+  }
+}

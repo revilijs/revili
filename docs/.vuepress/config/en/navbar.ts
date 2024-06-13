@@ -13,5 +13,5 @@ export const navbar = [
       }
     ]
   },
-  { text: 'Kit Store', link: '/docs/kit-store/@revili/revili-kit-default' },
+  { text: 'Kit Store', link: '/docs/others/kit-store' },
 ]

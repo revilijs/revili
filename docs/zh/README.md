@@ -2,6 +2,7 @@
 home: true
 modules:
   - BannerBrand
+  - store
   - MdContent
   - Footer
 bannerBrand:
