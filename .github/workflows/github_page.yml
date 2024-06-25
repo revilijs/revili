@@ -34,17 +34,9 @@ jobs:
         run: npm install
         working-directory: ./docs
 
-      - name: List files in docs directory after install
-        run: ls -la
-        working-directory: ./docs
-
       - name: Build the VuePress site
         run: npx vuepress build .
         working-directory: ./docs
-
-      - name: List built files
-        run: ls -la
-        working-directory: ./docs/.vuepress/dist
 
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v2
