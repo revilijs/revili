@@ -10,7 +10,7 @@
     "@vuepress-reco/tailwindcss-config": "2.0.0-rc.81",
     "vue": "^3.4.27",
     "vuepress": "2.0.0-rc.14",
-    "vuepress-theme-reco": "2.0.0-rc.18"
+    "vuepress-theme-reco": "2.0.0-rc.22"
   },
   "author": "reco_luan",
   "license": "MIT"

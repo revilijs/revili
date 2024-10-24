@@ -2,4 +2,4 @@
 title: revili.config.js
 ---
 
-Please look forward to it.
+敬请期待。
