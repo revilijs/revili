@@ -19,7 +19,5 @@ bannerBrand:
   buttons:
     - { text: Guide, link: '/docs/guide/introduction.html' }
     - { text: Getting Started, link: '/docs/guide/getting-started.html', type: 'plain' }
-  socialLinks:
-    - { icon: 'LogoGithub', link: 'https://github.com/recoluan/revili' }
 isShowTitleInHome: true
 ---

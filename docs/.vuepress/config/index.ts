@@ -4,14 +4,12 @@ import * as enConfig from './en'
 export const themeConfig = {
   locales: {
     '/': {
-      selectLanguageText: 'Languages',
       selectLanguageName: 'English',
       navbar: enConfig.navbar,
       series: enConfig.series,
       bulletin: enConfig.bulletin,
     },
     '/zh/': {
-      selectLanguageText: '选择语言',
       selectLanguageName: '简体中文',
       lastUpdatedText: '最后更新时间',
       navbar: zhConfig.navbar,
@@ -25,4 +23,14 @@ export const themeConfig = {
   docsBranch: 'main',
   docsDir: '/',
   componentsDir: './.vuepress/components',
+  socialLinks: [
+    {
+      icon: 'IconReco',
+      link: 'https://recoluan.com/'
+    },
+    {
+      icon: 'IconRecoTheme',
+      link: 'https://theme-reco.vuejs.press'
+    }
+  ],
 }
