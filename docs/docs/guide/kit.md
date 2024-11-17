@@ -32,24 +32,24 @@ revili create:kit
 
 ### Development
 
-套件的开发分为两部分，**自定义命令** 和 **GUI**。
+The development of the kit is divided into two parts, **Custom Command** 和 **GUI**。
 
-两者本身是独立的，不相互依赖，可以根据用户习惯只开发其中一种能力；同时也可以作为相通功能的不同表现形式，让用户根据自己的习惯或兴趣去选择使用方式。
+The two themselves are independent and not interdependent, and only one of the capabilities can be developed according to user habits; at the same time, they can also be used as different manifestations of connected functions, allowing users to choose the use method based on their own habits or interests.
 
-`Revili` 采用约定大于规范的原则，对套件的文件结构进行了约束：
-  - `node` 文件夹：放置套件的实例，通过 `defineKit` 对套件进行声明，用来注册自定义命令和 GUI 的本地通信服务等，详情请参考 [Node API](/zh/docs/api/node-api.html)；
-  - `client` 文件夹：放置 GUI 的用户操作界面相关的代码。
+`Revili` adopts the principle that conventions are greater than specifications to restrict the file structure of the kit:
+  - `node` folder: Place an instance of the kit, declare the kit through `defineKit`, and use it to register custom commands and `Local Communication Service` for the GUI. For details, please refer to [Node API](/docs/api/node-api.html);
+  - `client` folder: Place code related to the **User Operation Interface** of the GUI.
 
-#### 自定义命令
+#### Custom Command
 
-通过 `registerCommand` 注册自定义命令，`registerCommand` 对外暴露了 [CAC](https://github.com/cacjs/cac) 实例。
+Register a custom command through `registerCommand`, `registerCommand` exposes an instance of [CAC](https://github.com/cacjs/cac) to the outside world.
 
 **registerCommand**
-- 类型签名：
+- Type:
   ```ts
   ({ program: CAC, appConfig: AppConfig }) => void
   ```
-- 示例：
+- Example:
   ```ts
   import { defineKit, type Kit } from 'revili/node'
 
@@ -58,7 +58,7 @@ revili create:kit
 
     registerCommand(program) {
       program.command('test').action(() => {
-        console.log('你触发了 test 命令！')
+        console.log('You triggered the test command!')
       })
     },
   })
@@ -68,11 +68,11 @@ revili create:kit
 
 #### GUI
 
-GUI 开发又分为两部分，**用户操作界面** 和 **本地通信服务**。
+GUI development is divided into two parts, **User Operation Interface** and **Local Communication Service**.
 
-##### 用户操作界面
+##### User Operation Interface
 
-通过 `webFramework` 指定用户操作界面的技术栈，当前仅支持 `vue`，后面会支持 `react`、`servlet`、`web component` 等。
+The technical stack of the **User Operation Interface** is specified through the `webFramework`. Currently, only `vue` is supported, and `react`,`servlet`,`web component`, etc. will be supported later.
 
 ```ts
 import { defineKit, type Kit } from 'revili/node'
@@ -86,7 +86,7 @@ const demoKit: Kit = defineKit({
 export default demoKit
 ```
 
-在 `client` 文件夹中对 Web 应用进行开发，这里就和传统 Web 开发没有任何什么区别了，注意入口文件约定使用 `main.(ts|js)`。如果想对开发环境进行自定义，通过 `viteOptions` 进行配置即可，配置详情参考 [Vite](https://vitejs.dev/config/)。
+Developing Web applications in the `client` folder is no different from traditional Web development. Note that the entry file uses `main. (ts|js)`. If you want to customize the development environment, you can configure it through `viteOptions`. For configuration details, please refer to [Vite](https://vitejs.dev/config/).
 
 ```ts
 import { defineKit, type Kit } from 'revili/node'
@@ -104,16 +104,16 @@ const demoKit: Kit = defineKit({
 export default demoKit
 ```
 
-##### 本地通信服务
+##### Local Communication Service
 
-通过 `registerService` 注册与用户操作界面进行通信的本地服务，通过 `useServerSocket` 与用户操作界面进行通信。
+Register local services that communicate with the **User Operation Interface** through `registerService`, and communicate with the **User Operation Interface** through `useServerSocket`.
 
 **registerService**
-- 类型签名：
+- Type:
   ```ts
   (server: ViteDevServer) => void
   ```
-- 示例：
+- Example:
   ```ts
   import { defineKit, useServerSocket, type Kit } from 'revili/node'
 
@@ -123,11 +123,11 @@ export default demoKit
     registerService: server => {
       const socket = useServerSocket(server)
 
-      // 监听用户操作界面发来的指令 client:message
+      // Listen for instructions sent by the user operation interface client:message
       socket?.on('client:message', (data: any) => {
         if (data === 'USER_PATH') {
           const userPath = getUserPath()
-          // 发送服务端指令 server:message
+          // Send server command server:message
           socket?.send('server:message', userPath)
 
           return
@@ -139,7 +139,7 @@ export default demoKit
   export default demoKit
   ```
 
-在用户操作界面，通过 `useClientSocket` 与本地服务进行通信。
+In the **User Operation Interface**, communicate with local services through `useClientSocket`.
 
 ```vue
 <script setup lang="ts">
@@ -149,13 +149,13 @@ import { useClientSocket } from 'revili/client'
 const socket = useClientSocket()
 const msgFromServer = ref('click button to get')
 
-// 监听本地服务发来的指令 server:message
+// Listen for commands from local services server:message
 socket?.on('server:message', (data: any) => {
   msgFromServer.value = data
 })
 
 const getCurrnetPath = () => {
-  // 向本地服务发送指令 client:message
+  // Send a command to the local service client:message
   socket?.send('client:message', 'USER_PATH')
 }
 </script>
@@ -168,27 +168,27 @@ const getCurrnetPath = () => {
 </template>
 ```
 
-### 调试
+### Debug
 
-标准套件的产物存放在 `dist` 文件夹下，所以在需要在套件根目录执行命令时添加 `--dir=./dist` 参数。
+The products of the `Standard Kit` are stored under the `dist` folder, so add `--dir=./dist` parameter when you need to execute a command in the root directory of the kit.
 
 :::warning
-用户操作界面的修改不需要重启服务，本地通信服务的修改需要重新执行 start 命令。
+Modifications to the `User Operation Interface` do not require restarting the service, and modifications to the `Local Communication Service` require re-execution of the start command.
 :::
 
 ```bash
-# 代码实时编译
+# Local Develop Server
 npm run dev
 
-# GUI 调试
+# GUI Debug
 revili start --dir=./dist
 
-# 命令调试
+# Command Debug
 revili command-registered-by-kit --dir=./dist
 ```
 
-因为增加了 `--dir` 参数，需要对该参数进行处理：
-1. 增加 `--dir` 参数的定义
+Because the `--dir` parameter has been added, it needs to be processed:
+1. Add the definition of the `--dir` parameter
    ```ts
    program
       .command('cunstom-command')
@@ -197,7 +197,7 @@ revili command-registered-by-kit --dir=./dist
         // ...
       })
    ```
-2. 设置允许未知的参数
+2. Setting allows unknown parameters
    ```ts
    program
       .command('cunstom-command')
@@ -207,19 +207,19 @@ revili command-registered-by-kit --dir=./dist
       })
    ```
 
-### 发布
+### Publish
 
 ```bash
-# 编译
+# Build
 npm run build
 
-# 发布
+# Publish
 npm run publish
 ```
 
 ## Local Kit
 
-### 初始化
+### Initial
 
 ```
 ├── node
@@ -229,28 +229,28 @@ npm run publish
     └── App.vue
 ```
 
-### 开发
+### Develop
 
-参考 **标准套件**。
+Refer to **Standard Kit**。
 
-### 调试
+### Debug
 
-本地套件的文件存放在根目录文件夹下，所以在需要在套件根目录执行命令时添加 `--dir=./` 参数。
+Files for the `Local Kit` are stored in the root folder, so add `--dir=./` parameter when you need to execute a command in the root directory of the kit.
 
 :::warning
-用户操作界面的修改不需要重启服务，本地通信服务的修改需要重新执行 start 命令。
+Modifications to the user operation interface do not require restarting the service, and modifications to the `Local Communication Service` require re-execution of the `start` command.
 :::
 
 ```bash
-# GUI 调试
+# GUI Debuger
 revili start --dir=./
 
-# 命令调试
+# Command Debug
 revili command-registered-by-kit --dir=./
 ```
 
-因为增加了 `--dir` 参数，需要对该参数进行处理，具体请参考 **标准套件**。
+Because the `--dir` parameter has been added, it needs to be processed. For details, please refer to the **Standard Kit**.
 
-### 发布
+### Publish
 
-无需关注。
+No need to pay attention.
