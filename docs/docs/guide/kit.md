@@ -32,7 +32,7 @@ revili create:kit
 
 ### Development
 
-The development of the kit is divided into two parts, **Custom Command** 和 **GUI**。
+The development of the kit is divided into two parts, **Custom Command** and **GUI**。
 
 The two themselves are independent and not interdependent, and only one of the capabilities can be developed according to user habits; at the same time, they can also be used as different manifestations of connected functions, allowing users to choose the use method based on their own habits or interests.
 
