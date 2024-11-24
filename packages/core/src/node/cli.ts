@@ -4,11 +4,12 @@ import {
   initCommand,
   getReviliCache,
   createAddCommand,
-  createStartCommand,
-  createKitCommands,
   createUseCommand,
-  createRemoveCommand,
+  createTestCommand,
+  createKitCommands,
   createListCommand,
+  createStartCommand,
+  createRemoveCommand,
   createInitKitCommand
 } from './command/index.js'
 
@@ -30,10 +31,11 @@ if (matches) {
 
   await initCommand(async program => {
     createAddCommand(program)
-    createStartCommand(program)
     createUseCommand(program)
-    createRemoveCommand(program)
     createListCommand(program)
+    createTestCommand(program)
+    createStartCommand(program)
+    createRemoveCommand(program)
     createInitKitCommand(program)
 
     await createKitCommands(program, customKitDir)

@@ -1,7 +1,6 @@
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
 
-import { consoleUtil } from './index.js'
 import { CACHE_FOLDER_PATH, CWD } from '../alias.js'
 import { getReviliCache } from '../command/handleCache.js'
 
@@ -25,9 +24,6 @@ export async function getActiveKit(customKitDir: string) {
 
     return { activeKit, CLIENT_DIR }
   } catch(error) {
-    const errorMsg = customKitDir ? `The dir ${customKitDir} is unavailable.` : 'There is no kit in use.'
-    consoleUtil.error(errorMsg)
-
     return { activeKit: null, CLIENT_DIR: '' }
   }
 }

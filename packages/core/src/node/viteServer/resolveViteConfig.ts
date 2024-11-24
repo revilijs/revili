@@ -14,12 +14,15 @@ import {reviliPlugin} from './plugins/vitePluginRevili.js'
 import {tailwindcssConfig} from './tailwindcssConfig/index.js'
 import {virtualModulePlugin} from './plugins/vitePluginVirtualModule.js'
 
-import { getActiveKit } from '../utils/index.js'
+import { getActiveKit, consoleUtil } from '../utils/index.js'
 
 export async function resolveViteConfig(customKitDir: string): Promise<UserConfig> {
   const { activeKit, CLIENT_DIR } = await getActiveKit(customKitDir)
 
   if (!activeKit) {
+    const errorMsg = customKitDir ? `The dir ${customKitDir} is unavailable.` : 'There is no kit in use.'
+    consoleUtil.error(errorMsg)
+
     process.exit(1)
   }
 

@@ -45,7 +45,7 @@ export function setReviliCache(cache: ReviliCache = {
 export function setPackageCache() {
   try {
     fs.writeFileSync(CACHE_PACKAGED_FILE_PATH, JSON.stringify({
-      name: 'revili_caches',
+      name: 'revili_kits',
       type: 'module'
     })
     )
