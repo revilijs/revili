@@ -1,16 +1,16 @@
 import path from 'node:path'
 import { pathToFileURL } from 'node:url'
 
-import { CACHE_FOLDER_PATH, CWD } from '../alias.js'
-import { getReviliCache } from '../command/handleCache.js'
+import { PATHS, CWD } from '../alias.js'
+import { getReviliConfig } from '../command/handleConfig.js'
 
 import type { Kit } from '@revili/shared/node'
 
 export async function getActiveKit(customKitDir: string) {
   try {
-    const { activeKit: activeKitName } = await getReviliCache();
+    const { activeKit: activeKitName } = await getReviliConfig();
 
-    const ACTIVE_KIT_DIR = path.join(CACHE_FOLDER_PATH, `./node_modules/${activeKitName}`);
+    const ACTIVE_KIT_DIR = path.join(PATHS.USER_DATA_PATH, `./node_modules/${activeKitName}`);
 
     const CLIENT_DIR = customKitDir
       ? path.join(CWD, `${customKitDir}/client`)

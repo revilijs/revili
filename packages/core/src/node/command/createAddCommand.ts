@@ -1,9 +1,9 @@
 import {CAC} from 'cac'
 import { spinner, chalk } from '@revili/shared/node'
 
-import { CACHE_FOLDER_PATH } from '../alias.js'
+import { PATHS } from '../alias.js'
 import { execPromise } from '../utils/childProcess.js'
-import { initCacheFolder, getReviliCache, setReviliCache, type ReviliCache } from './handleCache.js'
+import { initConfigFolder, getReviliConfig, setReviliConfig, type ReviliConfig } from './handleConfig.js'
 
 const kitRegExp = /^(@[\d_-\w\W]+\/)?([\d_-\w]+)(@.+)?$/
 
@@ -11,7 +11,7 @@ export function createAddCommand(program: CAC) {
   program
     .command('add <kit>', 'Install kit')
     .action(async targetKit => {
-      initCacheFolder()
+      initConfigFolder()
 
       if (!kitRegExp.test(targetKit)) {
         console.error(`[revili] ${targetKit} not found`)
@@ -27,21 +27,22 @@ export function createAddCommand(program: CAC) {
       try {
         spinner.start(chalk.blue('[revili] ') + `${targetKit} is loading!`)
 
-        const { stdout } = await execPromise(`cd ${CACHE_FOLDER_PATH} && npm install ${targetKit} --save`);
+        const { stdout } = await execPromise(`cd ${PATHS.DATA_DIRS.kits} && npm install ${targetKit} --save`);
 
         if (!/^\nup to date/.test(stdout) && !/^\nadded/.test(stdout)) {
           spinner.fail(chalk.red('[revili] ') + `${targetKit} failed to load!`)
         } else {
-          const reviliCache: ReviliCache = await getReviliCache()
+          const reviliConfig: ReviliConfig = await getReviliConfig()
 
-          reviliCache.activeKit = kit
-          reviliCache.kitList.push(kit)
+          reviliConfig.activeKit = kit
+          reviliConfig.kitList.push(kit)
 
-          setReviliCache(reviliCache)
+          setReviliConfig(reviliConfig)
 
           spinner.succeed(chalk.green('[revili] ') + `${targetKit} loaded successfully!`)
         }
       } catch (error) {
+        console.log(222, error)
         spinner.fail(chalk.red('[revili] ') + `${targetKit} was not found!`)
       }
 

@@ -1,5 +1,5 @@
 export * from './initCommand.js'
-export * from './handleCache.js'
+export * from './handleConfig.js'
 export * from './createAddCommand.js'
 export * from './createUseCommand.js'
 export * from './createKitCommands.js'

@@ -2,7 +2,7 @@
 
 import {
   initCommand,
-  getReviliCache,
+  getReviliConfig,
   createAddCommand,
   createUseCommand,
   createTestCommand,
