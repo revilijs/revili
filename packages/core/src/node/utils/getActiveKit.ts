@@ -1,29 +1,38 @@
-import path from 'node:path'
+import { resolve } from 'node:path'
+import { existsSync } from 'node:fs'
 import { pathToFileURL } from 'node:url'
 
-import { PATHS, CWD } from '../alias.js'
-import { getReviliConfig } from '../command/handleConfig.js'
+import { PATHS } from '../alias.js'
+import { getReviliConfig } from './reviliData.js'
 
 import type { Kit } from '@revili/shared/node'
 
 export async function getActiveKit(customKitDir: string) {
   try {
-    const { activeKit: activeKitName } = await getReviliConfig();
+    const config = await getReviliConfig()
+    const activeKit = config.activeKit
 
-    const ACTIVE_KIT_DIR = path.join(PATHS.USER_DATA_PATH, `./node_modules/${activeKitName}`);
+    if (!activeKit) {
+      return { activeKit: null, CLIENT_DIR: '' }
+    }
+
+    const kitPath = resolve(PATHS.USER_DATA_PATH, 'node_modules', activeKit)
+
+    if (!existsSync(kitPath)) {
+      return { activeKit: null, CLIENT_DIR: '' }
+    }
 
     const CLIENT_DIR = customKitDir
-      ? path.join(CWD, `${customKitDir}/client`)
-      : path.join(ACTIVE_KIT_DIR, `./dist/client`);
+      ? resolve(PATHS.CWD, `${customKitDir}/client`)
+      : resolve(kitPath, `./dist/client`)
 
     const ACTIVE_KIT_ENTRY = customKitDir
-      ? path.join(CWD, `${customKitDir}/node/index.js`)
-      : path.join(ACTIVE_KIT_DIR, `./dist/node/index.js`);
+      ? resolve(PATHS.CWD, `${customKitDir}/node/index.js`)
+      : resolve(kitPath, `./dist/node/index.js`)
 
-    const activeKit = (await import(pathToFileURL(ACTIVE_KIT_ENTRY) as unknown as string)).default as Kit;
-
-    return { activeKit, CLIENT_DIR }
-  } catch(error) {
+    const activeKitModule = (await import(pathToFileURL(ACTIVE_KIT_ENTRY).href)) as { default: Kit }
+    return { activeKit: activeKitModule.default, CLIENT_DIR }
+  } catch (error) {
     return { activeKit: null, CLIENT_DIR: '' }
   }
 }

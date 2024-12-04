@@ -1,8 +1,8 @@
-import {CAC} from 'cac'
+import { CAC } from 'cac'
 import { chalk } from '@revili/shared/node'
 
-import { ReviliConfig, getReviliConfig } from './handleConfig.js'
 import { consoleUtil } from '../utils/index.js'
+import { getReviliConfig } from '../utils/reviliData.js'
 
 export function createListCommand(program: CAC) {
   program
@@ -19,18 +19,16 @@ export function createListCommand(program: CAC) {
 }
 
 async function listHandler() {
-  const reviliConfig: ReviliConfig = await getReviliConfig()
+  const reviliConfig = await getReviliConfig()
 
   if (!reviliConfig.kitList.length) {
-    consoleUtil.warn('No kits have been added yet.')
-  } else {
-    console.log(chalk.blue('[revili] ') + 'List of installed kits:')
-    reviliConfig.kitList.forEach(kit => {
-      if (kit === reviliConfig.activeKit) {
-        console.log(chalk.green('* ') + kit)
-      } else {
-        console.log('  ' + kit)
-      }
-    })
+    consoleUtil.warn('No kits have been added yet!')
+    return
   }
+
+  console.log(chalk.blue('[revili] ') + 'Installed kits:')
+  reviliConfig.kitList.forEach(kit => {
+    const prefix = kit === reviliConfig.activeKit ? '* ' : '  '
+    console.log(prefix + kit)
+  })
 }

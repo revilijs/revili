@@ -2,6 +2,7 @@ import { chalk } from "@revili/shared/node";
 
 export * from './getActiveKit.js'
 export * from './childProcess.js'
+export * from './kitData.js'
 
 export function toLowerCamelCase(str: string): string {
   let arr: string[] = str.split('-');
@@ -19,16 +20,16 @@ export function toLowerCamelCase(str: string): string {
 }
 
 export const consoleUtil = {
-  log(info: any) {
-    console.log(chalk.blue('[revili] ') + info)
+  log: (msg: string) => {
+    console.log(chalk.blue('[revili] ') + msg)
   },
-  success(info: any) {
-    console.log(chalk.green('[revili] ') + info)
+  success: (msg: string) => {
+    console.log(chalk.green('[revili] ') + msg)
   },
-  warn(info: any) {
-    console.warn(chalk.yellow('[revili] ') + info)
+  warn: (msg: string) => {
+    console.log(chalk.yellow('[revili] ') + msg)
   },
-  error(info: any) {
-    console.error(chalk.red('[revili] ') + info)
+  error: (msg: string) => {
+    console.error(chalk.red('[revili] ') + msg)
   }
 }

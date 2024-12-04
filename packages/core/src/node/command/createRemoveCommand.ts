@@ -1,10 +1,11 @@
-import {CAC} from 'cac'
+import { CAC } from 'cac'
 import { spinner, chalk } from '@revili/shared/node'
 
 import { PATHS } from '../alias.js'
 import { consoleUtil } from '../utils/index.js'
 import { execPromise } from '../utils/childProcess.js'
-import { getReviliConfig, setReviliConfig, type ReviliConfig } from './handleConfig.js'
+import { getReviliConfig, setReviliConfig, type ReviliConfig } from '../utils/reviliData.js'
+import { removeKitData } from '../utils/kitData.js'
 
 export function createRemoveCommand(program: CAC) {
   program
@@ -12,36 +13,34 @@ export function createRemoveCommand(program: CAC) {
     .action(async kit => {
       const reviliConfig: ReviliConfig = await getReviliConfig()
 
-      if (!(reviliConfig.activeKit === kit && reviliConfig.kitList.includes(kit))) {
-        consoleUtil.warn(`${kit} has not added`)
-        return
-      }
-
-
-      reviliConfig.activeKit = ''
-      reviliConfig.kitList.splice(reviliConfig.kitList.findIndex(item => item === kit), 1)
-
-      setReviliConfig(reviliConfig)
-
-      try {
-        spinner.start(chalk.blue('[revili] ') + `${kit} is being uninstalled!`)
-
-        const { stdout } = await execPromise(`cd ${PATHS.USER_DATA_PATH} && npm uninstall ${kit} --save`);
-
-        if (!/^\nup to date/.test(stdout) && !/^\nremoved/.test(stdout)) {
-          spinner.fail(chalk.red('[revili] ') + `${kit} unloading failed!`)
-        } else {
-          const reviliConfig: ReviliConfig = await getReviliConfig()
-
-          reviliConfig.activeKit = kit
-          reviliConfig.kitList.push(kit)
-
-          setReviliConfig(reviliConfig)
-
-          spinner.succeed(chalk.green('[revili] ') + `${kit} unloaded successfully!`)
+      if (!reviliConfig.kitList.includes(kit)) {
+        consoleUtil.warn(`${kit} has not been added!`)
+      } else {
+        // Remove from config
+        reviliConfig.kitList = reviliConfig.kitList.filter(k => k !== kit)
+        if (reviliConfig.activeKit === kit) {
+          reviliConfig.activeKit = reviliConfig.kitList[0] || ''
         }
-      } catch (error) {
-        spinner.fail(chalk.red('[revili] ') + `${kit} was not found!`)
+        await setReviliConfig(reviliConfig)
+
+        // Remove kit data
+        await removeKitData(kit)
+
+        try {
+          spinner.start(chalk.blue('[revili] ') + `${kit} is being uninstalled!`)
+
+          const { stdout } = await execPromise(`cd ${PATHS.USER_DATA_PATH} && npm uninstall ${kit} --save`);
+
+          if (!/^\nup to date/.test(stdout) && !/^\nremoved/.test(stdout)) {
+            spinner.fail(chalk.red('[revili] ') + `${kit} unloading failed!`)
+          } else {
+            spinner.succeed(chalk.green('[revili] ') + `${kit} unloaded successfully!`)
+          }
+        } catch (error) {
+          spinner.fail(chalk.red('[revili] ') + `${kit} was not found!`)
+        }
+
+        consoleUtil.success(`Remove ${kit} succeeded!`)
       }
     })
 }

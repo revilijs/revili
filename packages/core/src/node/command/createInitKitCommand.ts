@@ -34,7 +34,11 @@ export function createInitKitCommand(program: CAC) {
         console.log()
       } catch(error) {
         spinner.fail(chalk.redBright(`[revili] Load file from git`))
-        consoleUtil.error(error)
+        if (error instanceof Error) {
+          consoleUtil.error(error.message)
+        } else {
+          consoleUtil.error('An unknown error occurred while loading the kit')
+        }
         spinner.stop()
       }
     })

@@ -1,13 +1,13 @@
 import {CAC} from 'cac'
 
 import { consoleUtil } from '../utils/index.js'
-import { getReviliConfig, setReviliConfig, type ReviliConfig } from './handleConfig.js'
+import { getReviliConfig, setReviliConfig } from '../utils/reviliData.js'
 
 export function createUseCommand(program: CAC) {
   program
     .command('use <kit>', 'Use kit')
     .action(async kit => {
-      const reviliConfig: ReviliConfig = await getReviliConfig()
+      const reviliConfig = await getReviliConfig()
 
       if (reviliConfig.activeKit === kit) {
         consoleUtil.warn(`${kit} is active and does not need to be switched.`)
@@ -15,7 +15,7 @@ export function createUseCommand(program: CAC) {
         consoleUtil.warn(`${kit} has not been added, please execute 'revili add ${kit}' first.`)
       } else {
         reviliConfig.activeKit = kit
-        setReviliConfig(reviliConfig)
+        await setReviliConfig(reviliConfig)
 
         consoleUtil.success(`Switching ${kit} succeeded!`)
       }

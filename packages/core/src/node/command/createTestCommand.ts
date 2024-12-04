@@ -1,16 +1,23 @@
-import {CAC} from 'cac'
+import { CAC } from 'cac'
+import { chalk } from '@revili/shared/node'
 
-import { ReviliConfig, getReviliConfig, initConfigFolder } from './handleConfig.js'
 import { consoleUtil } from '../utils/index.js'
+import { getReviliConfig, initConfigFolder } from '../utils/reviliData.js'
 
 export function createTestCommand(program: CAC) {
   program
-    .command('test', 'Test command')
+    .command('test', 'Test kit')
     .action(async () => {
       initConfigFolder()
 
-      const reviliConfig: ReviliConfig = await getReviliConfig()
+      const reviliConfig = await getReviliConfig()
 
-      consoleUtil.log(JSON.stringify(reviliConfig, null, 2))
+      if (!reviliConfig.activeKit) {
+        consoleUtil.warn('No active kit found. Please add and use a kit first.')
+        return
+      }
+
+      console.log(chalk.blue('[revili] ') + `Testing ${reviliConfig.activeKit}...`)
+      // Add your test logic here
     })
 }
