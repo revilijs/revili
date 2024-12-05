@@ -1,1 +1,1 @@
-export * from '@revili/helpers/common'
+export * from '@revili/helpers/shared'

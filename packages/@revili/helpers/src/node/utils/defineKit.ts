@@ -1,6 +1,6 @@
 import { CAC } from 'cac'
 import type { ViteDevServer, Plugin, UserConfig } from 'vite'
-import type { ReviliConfig } from '../../common/config.js'
+import type { ReviliConfig } from '../../shared/config.js'
 
 export interface KitOptions {
   name: string
