@@ -5,7 +5,7 @@ import { pathToFileURL } from 'node:url'
 import { PATHS } from '../alias.js'
 import { getReviliConfig } from './reviliData.js'
 
-import type { Kit } from '@revili/shared/node'
+import type { Kit } from '@revili/helpers/node'
 
 export async function getActiveKit(customKitDir: string) {
   try {
@@ -16,7 +16,7 @@ export async function getActiveKit(customKitDir: string) {
       return { activeKit: null, CLIENT_DIR: '' }
     }
 
-    const kitPath = resolve(PATHS.USER_DATA_PATH, 'node_modules', activeKit)
+    const kitPath = resolve(PATHS.DATA_DIRS.kits, 'node_modules', activeKit)
 
     if (!existsSync(kitPath)) {
       return { activeKit: null, CLIENT_DIR: '' }

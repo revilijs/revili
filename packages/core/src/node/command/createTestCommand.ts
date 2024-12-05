@@ -1,5 +1,5 @@
 import { CAC } from 'cac'
-import { chalk } from '@revili/shared/node'
+import { chalk } from '@revili/helpers/node'
 
 import { consoleUtil } from '../utils/index.js'
 import { getReviliConfig, initConfigFolder } from '../utils/reviliData.js'

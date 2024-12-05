@@ -1,5 +1,5 @@
 import { CAC } from 'cac'
-import { spinner, chalk } from '@revili/shared/node'
+import { spinner, chalk } from '@revili/helpers/node'
 
 import { PATHS } from '../alias.js'
 import { consoleUtil } from '../utils/index.js'

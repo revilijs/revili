@@ -2,7 +2,7 @@ import {CAC} from 'cac'
 import fs from 'node:fs'
 import path from 'node:path'
 import { default as gitly } from 'gitly'
-import { inquirer, spinner, chalk } from '@revili/shared/node'
+import { inquirer, spinner, chalk } from '@revili/helpers/node'
 
 import { CWD } from '../alias.js'
 import { consoleUtil } from '../utils/index.js'

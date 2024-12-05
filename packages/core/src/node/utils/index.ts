@@ -1,4 +1,4 @@
-import { chalk } from "@revili/shared/node";
+import { chalk } from "@revili/helpers/node";
 
 export * from './getActiveKit.js'
 export * from './childProcess.js'
