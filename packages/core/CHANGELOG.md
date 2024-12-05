@@ -1,5 +1,13 @@
 # revili
 
+## 0.0.1-alpha.11
+
+### Patch Changes
+
+- allocate data storage space for kit
+- Updated dependencies
+  - @revili/helpers@0.0.1-alpha.9
+
 ## 0.0.1-alpha.10
 
 ### Patch Changes

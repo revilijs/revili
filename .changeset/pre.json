@@ -2,9 +2,9 @@
   "mode": "exit",
   "tag": "alpha",
   "initialVersions": {
-    "@revili/revili-kit-demo": "0.0.1-alpha.7",
-    "@revili/shared": "0.0.1-alpha.7",
-    "revili": "0.0.1-alpha.9"
+    "@revili/helpers": "0.0.1-alpha.8",
+    "@revili/revili-kit-demo": "0.0.1-alpha.8",
+    "revili": "0.0.1-alpha.10"
   },
   "changesets": [
     "cold-cooks-smoke",
@@ -15,6 +15,7 @@
     "mighty-rabbits-talk",
     "pink-boxes-beg",
     "proud-chairs-lay",
+    "serious-fireants-roll",
     "silver-pens-double",
     "sweet-roses-share",
     "violet-icons-fail"
