@@ -1,4 +1,4 @@
-import {CAC} from 'cac'
+import {CAC} from '@revili/helpers/node'
 import {createViteServer} from '../viteServer/index.js'
 
 export function createStartCommand(program: CAC) {

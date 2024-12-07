@@ -1,7 +1,6 @@
-import {CAC} from 'cac'
+import { CAC, getReviliConfig, setReviliConfig } from '@revili/helpers/node'
 
 import { consoleUtil } from '../utils/index.js'
-import { getReviliConfig, setReviliConfig } from '../utils/reviliData.js'
 
 export function createUseCommand(program: CAC) {
   program

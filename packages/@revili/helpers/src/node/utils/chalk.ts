@@ -1,3 +1,3 @@
 import chalk from 'chalk';
 
-export default chalk;
+export { chalk }

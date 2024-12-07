@@ -1,6 +1,8 @@
 import { mergeConfig } from 'vite'
 import type { UserConfig } from 'vite'
 
+import { getActiveKit } from '@revili/helpers/node'
+
 import {default as vuePlugin} from '@vitejs/plugin-vue'
 import {default as vueJsxPlugin} from '@vitejs/plugin-vue-jsx'
 
@@ -14,7 +16,7 @@ import {reviliPlugin} from './plugins/vitePluginRevili.js'
 import {tailwindcssConfig} from './tailwindcssConfig/index.js'
 import {virtualModulePlugin} from './plugins/vitePluginVirtualModule.js'
 
-import { getActiveKit, consoleUtil } from '../utils/index.js'
+import { consoleUtil } from '../utils/index.js'
 
 export async function resolveViteConfig(customKitDir: string): Promise<UserConfig> {
   const { activeKit, CLIENT_DIR } = await getActiveKit(customKitDir)

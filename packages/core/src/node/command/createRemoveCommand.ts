@@ -1,11 +1,7 @@
-import { CAC } from 'cac'
-import { spinner, chalk } from '@revili/helpers/node'
+import { CAC, spinner, chalk, execPromise, removeKitData, getReviliConfig, setReviliConfig, type ReviliConfig } from '@revili/helpers/node'
 
 import { PATHS } from '../alias.js'
 import { consoleUtil } from '../utils/index.js'
-import { execPromise } from '../utils/childProcess.js'
-import { getReviliConfig, setReviliConfig, type ReviliConfig } from '../utils/reviliData.js'
-import { removeKitData } from '../utils/kitData.js'
 
 export function createRemoveCommand(program: CAC) {
   program

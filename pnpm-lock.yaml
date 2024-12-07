@@ -67,6 +67,9 @@ importers:
       chalk:
         specifier: 5.3.0
         version: 5.3.0
+      gitly:
+        specifier: 3.0.0
+        version: 3.0.0
       inquirer:
         specifier: 9.2.10
         version: 9.2.10
@@ -118,12 +121,6 @@ importers:
       autoprefixer:
         specifier: 10.4.13
         version: 10.4.13(postcss@8.4.21)
-      cac:
-        specifier: 6.7.14
-        version: 6.7.14
-      gitly:
-        specifier: 3.0.0
-        version: 3.0.0
       postcss:
         specifier: 8.4.21
         version: 8.4.21

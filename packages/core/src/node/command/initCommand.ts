@@ -1,7 +1,9 @@
-import {CAC} from 'cac'
+
 import fs from 'node:fs'
 import { join } from 'node:path'
-import { CLI_FILE_DIR } from '../alias.js'
+import { CAC } from '@revili/helpers/node'
+
+import { PATHS } from '../alias.js'
 
 const program = new CAC('revili')
 
@@ -29,7 +31,7 @@ export async function initCommand(callback: (program: CAC) => void) {
 
 function getVerson(): string {
   let version = 'null'
-  const PACKAGE_PATH = join(CLI_FILE_DIR, '../../package.json')
+  const PACKAGE_PATH = join(PATHS.CLI_FILE_DIR, '../../package.json')
 
   try {
     version = JSON.parse(fs.readFileSync(PACKAGE_PATH).toString()).version

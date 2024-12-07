@@ -1,8 +1,6 @@
-import { CAC } from 'cac'
-import { chalk } from '@revili/helpers/node'
+import { CAC, chalk, getReviliConfig } from '@revili/helpers/node'
 
 import { consoleUtil } from '../utils/index.js'
-import { getReviliConfig } from '../utils/reviliData.js'
 
 export function createListCommand(program: CAC) {
   program

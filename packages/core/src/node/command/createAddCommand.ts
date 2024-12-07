@@ -1,10 +1,6 @@
-import {CAC} from 'cac'
-import { spinner, chalk } from '@revili/helpers/node'
-import { consoleUtil } from '../utils/index.js'
+import { CAC, spinner, chalk, execPromise, initConfigFolder, getReviliConfig, setReviliConfig, type ReviliConfig, initKitData } from '@revili/helpers/node'
+
 import { PATHS } from '../alias.js'
-import { execPromise } from '../utils/childProcess.js'
-import { initConfigFolder, getReviliConfig, setReviliConfig, type ReviliConfig } from '../utils/reviliData.js'
-import { initKitData } from '../utils/kitData.js'
 
 const kitRegExp = /^(@[\d_-\w\W]+\/)?([\d_-\w]+)(@.+)?$/
 
@@ -49,6 +45,7 @@ export function createAddCommand(program: CAC) {
           }
         }
       } catch (error) {
+        console.error(111, error)
         spinner.fail(chalk.red('[revili] ') + `${targetKit} was not found!`)
       }
 

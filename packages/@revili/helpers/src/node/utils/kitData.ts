@@ -1,6 +1,6 @@
 import fs from 'node:fs'
 import { resolve } from 'node:path'
-import { DATA_DIRS } from '../alias.js'
+import { DATA_DIRS } from '../paths.js'
 
 /**
  * Basic kit data structure
@@ -28,7 +28,7 @@ function kitNameToPath(kitName: string): string {
  * @param kitName The name of the kit
  * @returns The absolute path to the kit's data directory
  */
-export function getKitDataPath(kitName: string) {
+function getKitDataPath(kitName: string) {
   const kitPath = kitNameToPath(kitName)
   return resolve(DATA_DIRS.kitsData, kitPath)
 }
@@ -39,7 +39,7 @@ export function getKitDataPath(kitName: string) {
  * @param filename The name of the file
  * @returns The absolute path to the file in the kit's data directory
  */
-export function getKitDataFilePath(kitName: string, filename: string) {
+function getKitDataFilePath(kitName: string, filename: string) {
   return resolve(getKitDataPath(kitName), filename)
 }
 
@@ -111,7 +111,7 @@ export async function writeKitData<T extends object>(kitName: string, data: T): 
  * @param partialData Partial data object to merge with existing data
  */
 export async function updateKitData<T extends object>(kitName: string, partialData: Partial<T>): Promise<void> {
-  const existingData = await getKitData<T>(kitName)
-  const newData = { ...existingData, ...partialData }
-  await writeKitData(kitName, newData)
+  const currentData = await getKitData<T>(kitName)
+  const updatedData = { ...currentData, ...partialData }
+  await writeKitData(kitName, updatedData)
 }

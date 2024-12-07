@@ -1,9 +1,5 @@
 import { chalk } from "@revili/helpers/node";
 
-export * from './getActiveKit.js'
-export * from './childProcess.js'
-export * from './kitData.js'
-
 export function toLowerCamelCase(str: string): string {
   let arr: string[] = str.split('-');
 

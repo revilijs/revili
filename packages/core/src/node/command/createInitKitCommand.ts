@@ -1,10 +1,8 @@
-import {CAC} from 'cac'
 import fs from 'node:fs'
 import path from 'node:path'
-import { default as gitly } from 'gitly'
-import { inquirer, spinner, chalk } from '@revili/helpers/node'
+import { CAC, inquirer, spinner, chalk, gitly } from '@revili/helpers/node'
 
-import { CWD } from '../alias.js'
+import { PATHS } from '../alias.js'
 import { consoleUtil } from '../utils/index.js'
 
 export function createInitKitCommand(program: CAC) {
@@ -21,7 +19,7 @@ export function createInitKitCommand(program: CAC) {
       try {
         const targetDir = kitName ?? gitRepo
         // @ts-ignore
-        await gitly.default(`${gitScope}/${gitRepo}`, path.join(CWD, targetDir))
+        await gitly(`${gitScope}/${gitRepo}#main`, path.join(PATHS.CWD, targetDir))
         spinner.succeed(`[revili] Load file from https://github.com/${gitScope}/${gitRepo}`)
 
 
@@ -83,7 +81,7 @@ function changePackage (kitName: string, targetDir: string) {
   spinner.start(chalk.blue(`[revili] Edit kit name`))
 
   return new Promise((resolve) => {
-    const packageJsonPath = `${CWD}/${targetDir}/package.json`
+    const packageJsonPath = `${PATHS.CWD}/${targetDir}/package.json`
     fs.readFile(packageJsonPath, (err, data) => {
       if (err) throw err
       const _data = JSON.parse(data.toString())
