@@ -8,8 +8,8 @@ export const bulletin = {
       type: 'text',
       content: `
       <ul>
-        <li>revili: 0.0.1-alpha.10</li>
-        <li>@revili/revili-kit-demo: 0.0.1-alpha.8</li>
+        <li>revili: 0.0.1-alpha.12</li>
+        <li>@revili/revili-kit-demo: 0.0.1-alpha.10</li>
       </ul>`,
       style: 'font-size: 12px; color: #5D67E8;'
     },
