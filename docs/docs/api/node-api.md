@@ -36,7 +36,7 @@ title: Node API
   export default demoKit
   ```
 
-## KitOptions
+### KitOptions
 
 ```ts
 interface KitOptions {
@@ -47,6 +47,47 @@ interface KitOptions {
   registerCommand: (params: {program: CAC; reviliConfig?: ReviliConfig}) => void
 }
 ```
+
+## getKitData
+
+- Type: `<T extends object>(kitName: string) => Promise<T>`
+- Description: Get current kit data.
+- Example:
+  ```typescript
+  import { getKitData } from '@revili/helpers/node'
+
+  const kitData = await getKitData()
+  ```
+
+## writeKitData
+
+- Type: `<T extends object>(kitName: string, data: T) => Promise<void>`
+- Description: Write kit data.
+- Example:
+  ```typescript
+  import { writeKitData } from '@revili/helpers/node'
+
+  await writeKitData({
+    name: 'my-kit',
+    version: '1.0.0',
+    description: 'My first kit',
+    author: 'reco_luan'
+  })
+  ```
+
+### updateKitData
+
+- Type: `<T extends object>(kitName: string, partialData: Partial<T>) => Promise<void>`
+- Description: Updates kit data to update only the specified fields.
+- Example:
+  ```typescript
+  import { updateKitData } from '@revili/helpers/node'
+
+  await updateKitData({
+    version: '1.0.1',
+    description: 'The description has been updated!'
+  })
+  ```
 
 ## useServerSocket
 

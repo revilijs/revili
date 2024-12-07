@@ -168,6 +168,10 @@ const getCurrnetPath = () => {
 </template>
 ```
 
+#### Kit 的数据持久化
+
+Revili 提供了 `getKitData`、`writeKitData` 和 `updateKitData` 3 个 API 来实现数据的持久化，详情请参考 [Node API](/zh/docs/api/node-api.html)。 
+
 ### 调试
 
 标准套件的产物存放在 `dist` 文件夹下，所以在需要在套件根目录执行命令时添加 `--dir=./dist` 参数。

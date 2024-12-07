@@ -168,6 +168,10 @@ const getCurrnetPath = () => {
 </template>
 ```
 
+#### Kit's data persistence
+
+Revili provides `getKitData`, `writeKitData`, and `updateKitData` 3 APIs to achieve data persistence, refer to [Node API](/docs/api/node-api.html) for details.
+
 ### Debug
 
 The products of the `Standard Kit` are stored under the `dist` folder, so add `--dir=./dist` parameter when you need to execute a command in the root directory of the kit.

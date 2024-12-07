@@ -36,7 +36,7 @@ title: Node API
   export default demoKit
   ```
 
-## KitOptions
+### KitOptions
 
 ```ts
 interface KitOptions {
@@ -47,6 +47,47 @@ interface KitOptions {
   registerCommand: (params: {program: CAC; reviliConfig?: ReviliConfig}) => void
 }
 ```
+
+## getKitData
+
+- 类型：`<T extends object>(kitName: string) => Promise<T>`
+- 描述：获取当前 kit 的数据。
+- 案例：
+  ```typescript
+  import { getKitData } from 'revili/node'
+
+  const kitData = await getKitData()
+  ```
+
+## writeKitData
+
+- 类型：`<T extends object>(kitName: string, data: T) => Promise<void>`
+- 描述：写入 kit 数据。
+- 案例：
+  ```typescript
+  import { writeKitData } from 'revili/node'
+
+  await writeKitData({
+    name: 'my-kit',
+    version: '1.0.0',
+    description: '我的第一个 kit',
+    author: '作者名'
+  })
+  ```
+
+### updateKitData
+
+- 类型：`<T extends object>(kitName: string, partialData: Partial<T>) => Promise<void>`
+- 描述：更新 kit 数据，只更新指定的字段。
+- 案例：
+  ```typescript
+  import { updateKitData } from 'revili/node'
+
+  await updateKitData({
+    version: '1.0.1',
+    description: '更新后的描述'
+  })
+  ```
 
 ## useServerSocket
 
