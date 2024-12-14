@@ -71,7 +71,7 @@ export async function getActiveKit(customKitDir: string) {
   try {
     const { activeKit: activeKitName } = await getReviliConfig();
 
-    const ACTIVE_KIT_DIR = path.join(USER_DATA_PATH, `./node_modules/${activeKitName}`);
+    const ACTIVE_KIT_DIR = path.join(DATA_DIRS.kits, `./node_modules/${activeKitName}`);
 
     const CLIENT_DIR = customKitDir
       ? path.join(CWD, `${customKitDir}/client`)
