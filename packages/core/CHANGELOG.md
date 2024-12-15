@@ -1,5 +1,13 @@
 # revili
 
+## 0.0.1-alpha.13
+
+### Patch Changes
+
+- fix kit path errors & optimize node api
+- Updated dependencies
+  - @revili/helpers@0.0.1-alpha.11
+
 ## 0.0.1-alpha.12
 
 ### Patch Changes

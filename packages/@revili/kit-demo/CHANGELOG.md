@@ -1,5 +1,12 @@
 # @revili/revili-kit-default
 
+## 0.0.1-alpha.11
+
+### Patch Changes
+
+- Updated dependencies
+  - revili@0.0.1-alpha.13
+
 ## 0.0.1-alpha.10
 
 ### Patch Changes
