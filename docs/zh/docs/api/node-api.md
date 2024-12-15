@@ -50,7 +50,7 @@ interface KitOptions {
 
 ## getKitData
 
-- 类型：`<T extends object>(kitName: string) => Promise<T>`
+- 类型：`<T extends object>() => Promise<KitData & T>`
 - 描述：获取当前 kit 的数据。
 - 案例：
   ```typescript
@@ -59,25 +59,9 @@ interface KitOptions {
   const kitData = await getKitData()
   ```
 
-## writeKitData
+## updateKitData
 
-- 类型：`<T extends object>(kitName: string, data: T) => Promise<void>`
-- 描述：写入 kit 数据。
-- 案例：
-  ```typescript
-  import { writeKitData } from 'revili/node'
-
-  await writeKitData({
-    name: 'my-kit',
-    version: '1.0.0',
-    description: '我的第一个 kit',
-    author: '作者名'
-  })
-  ```
-
-### updateKitData
-
-- 类型：`<T extends object>(kitName: string, partialData: Partial<T>) => Promise<void>`
+- 类型：`<T extends object>(partialData: Partial<T>) => Promise<void>`
 - 描述：更新 kit 数据，只更新指定的字段。
 - 案例：
   ```typescript

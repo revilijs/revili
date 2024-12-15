@@ -50,7 +50,7 @@ interface KitOptions {
 
 ## getKitData
 
-- Type: `<T extends object>(kitName: string) => Promise<T>`
+- Type: `<T extends object>() => Promise<KitData & T>`
 - Description: Get current kit data.
 - Example:
   ```typescript
@@ -59,25 +59,9 @@ interface KitOptions {
   const kitData = await getKitData()
   ```
 
-## writeKitData
+## updateKitData
 
-- Type: `<T extends object>(kitName: string, data: T) => Promise<void>`
-- Description: Write kit data.
-- Example:
-  ```typescript
-  import { writeKitData } from '@revili/helpers/node'
-
-  await writeKitData({
-    name: 'my-kit',
-    version: '1.0.0',
-    description: 'My first kit',
-    author: 'reco_luan'
-  })
-  ```
-
-### updateKitData
-
-- Type: `<T extends object>(kitName: string, partialData: Partial<T>) => Promise<void>`
+- Type: `<T extends object>(partialData: Partial<T>) => Promise<void>`
 - Description: Updates kit data to update only the specified fields.
 - Example:
   ```typescript

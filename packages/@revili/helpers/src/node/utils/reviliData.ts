@@ -67,7 +67,7 @@ export function setPackageConfig() {
   }
 }
 
-export async function getActiveKit(customKitDir: string) {
+export async function getActiveKit(customKitDir?: string) {
   try {
     const { activeKit: activeKitName } = await getReviliConfig();
 

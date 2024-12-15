@@ -7,7 +7,7 @@ import { consoleUtil } from '../utils/index.js'
 
 export function createInitKitCommand(program: CAC) {
   program
-    .command('create:kit', 'Use kit')
+    .command('create:kit', 'Init kit')
     .allowUnknownOptions()
     .action(async () => {
       const { kitName, webFramework } = await handleInquirer()
