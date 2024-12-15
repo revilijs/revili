@@ -2,6 +2,7 @@ import fs from 'node:fs'
 import { resolve } from 'node:path'
 import { DATA_DIRS } from '../paths.js'
 import { getReviliConfig } from './reviliData.js'
+import { get } from 'node:http'
 
 /**
  * Basic kit data structure
@@ -80,7 +81,7 @@ export async function initKitData(kitName: string): Promise<void> {
  * Read kit data from data.json
  * @returns The kit data object, or null if data doesn't exist
  */
-export async function getKitData<T extends Omit<KitData, 'name' | 'installedAt'>, K extends keyof (KitData & T)>(
+export async function getKitData<T extends Omit<KitData, 'name' | 'installedAt'>, K extends keyof (KitData & T) = keyof (KitData & T)>(
   prop: K
 ): Promise<(KitData & T)[K] | null>
 export async function getKitData<T extends Omit<KitData, 'name' | 'installedAt'>>(): Promise<(KitData & T) | null>
@@ -104,6 +105,8 @@ export async function getKitData<T extends Omit<KitData, 'name' | 'installedAt'>
     return null
   }
 }
+
+const a = getKitData<{ name: string }, 'name'>('name')
 
 /**
  * Write kit data to data.json

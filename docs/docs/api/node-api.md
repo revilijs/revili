@@ -57,6 +57,7 @@ interface KitOptions {
   import { getKitData } from '@revili/helpers/node'
 
   const kitData = await getKitData()
+  const propOfKitData = await getKitData<{ d: string }, 'd'>('d')
   ```
 
 ## updateKitData
