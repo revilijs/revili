@@ -80,9 +80,13 @@ export async function initKitData(kitName: string): Promise<void> {
  * Read kit data from data.json
  * @returns The kit data object, or null if data doesn't exist
  */
-export async function getKitData<T extends Omit<KitData, 'name' | 'installedAt'>, K extends keyof T = never>(
+export async function getKitData<T extends Omit<KitData, 'name' | 'installedAt'>, K extends keyof (KitData & T)>(
+  prop: K
+): Promise<(KitData & T)[K] | null>
+export async function getKitData<T extends Omit<KitData, 'name' | 'installedAt'>>(): Promise<(KitData & T) | null>
+export async function getKitData<T extends Omit<KitData, 'name' | 'installedAt'>, K extends keyof (KitData & T)>(
   prop?: K
-): Promise<K extends never ? (KitData & T) | null : T[K] | null> {
+): Promise<(KitData & T) | (KitData & T)[K] | null> {
   const { activeKit } = await getReviliConfig()
   const dataPath = await getKitDataFilePath(activeKit, 'data.json')
 
@@ -91,13 +95,13 @@ export async function getKitData<T extends Omit<KitData, 'name' | 'installedAt'>
     const data = JSON.parse(content) as KitData & T
 
     if (prop !== undefined) {
-      return data[prop] as K extends never ? (KitData & T) | null : T[K] | null
+      return data[prop]
     }
 
-    return data as K extends never ? (KitData & T) | null : T[K] | null
+    return data
   } catch (error) {
     console.error('Error reading kit data:', error)
-    return null as K extends never ? (KitData & T) | null : T[K] | null
+    return null
   }
 }
 
