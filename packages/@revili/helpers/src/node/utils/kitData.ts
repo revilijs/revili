@@ -2,14 +2,19 @@ import fs from 'node:fs'
 import { resolve } from 'node:path'
 import { DATA_DIRS } from '../paths.js'
 import { getReviliConfig } from './reviliData.js'
+import { get } from 'node:http'
+
+/**
+ * Basic object type with any string/number/symbol keys
+ */
+export type BasicRecord = Record<string | number | symbol, unknown>
 
 /**
  * Basic kit data structure
  */
-export interface KitData {
+export interface KitData<T extends BasicRecord & Omit<KitData<T>, 'name' | 'installedAt'> = {}> {
   name: string
   installedAt: string
-  [key: string]: unknown
 }
 
 /**
@@ -80,22 +85,26 @@ export async function initKitData(kitName: string): Promise<void> {
  * Read kit data from data.json
  * @returns The kit data object, or null if data doesn't exist
  */
-export async function getKitData<T extends Omit<KitData, 'name' | 'installedAt'>, K extends keyof (KitData & T)>(
+export async function getKitData<K extends keyof KitData = keyof KitData>(
   prop: K
-): Promise<(KitData & T)[K] | null>
-export async function getKitData<T extends Omit<KitData, 'name' | 'installedAt'>>(): Promise<(KitData & T) | null>
-export async function getKitData<T extends Omit<KitData, 'name' | 'installedAt'>, K extends keyof (KitData & T)>(
+): Promise<KitData[K] | null>
+export async function getKitData<T extends BasicRecord, K extends keyof T = keyof T>(
+  prop: K
+): Promise<T[K] | null>
+export async function getKitData<T extends BasicRecord>(): Promise<KitData<T> | null>
+export async function getKitData(): Promise<KitData<{}> | null>
+export async function getKitData<T extends BasicRecord, K extends keyof KitData<T>>(
   prop?: K
-): Promise<(KitData & T) | (KitData & T)[K] | null> {
+): Promise<KitData<T>[K] | null | KitData<T>> {
   const { activeKit } = await getReviliConfig()
   const dataPath = await getKitDataFilePath(activeKit, 'data.json')
 
   try {
     const content = await fs.promises.readFile(dataPath, 'utf-8')
-    const data = JSON.parse(content) as KitData & T
+    const data = JSON.parse(content) as KitData<T>
 
     if (prop !== undefined) {
-      return data[prop]
+      return data[prop] !== undefined ? data[prop] : null
     }
 
     return data
@@ -110,7 +119,7 @@ export async function getKitData<T extends Omit<KitData, 'name' | 'installedAt'>
  * @param kitName The name of the kit
  * @param data The data object to write
  */
-export async function writeKitData(kitName: string, data: KitData): Promise<void> {
+export async function writeKitData<T extends BasicRecord & Omit<KitData<T>, 'name' | 'installedAt'>>(kitName: string, data: KitData<T>): Promise<void> {
   await ensureKitDataDir(kitName)
   const dataPath = await getKitDataFilePath(kitName, 'data.json')
   await fs.promises.writeFile(dataPath, JSON.stringify(data, null, 2))
@@ -120,16 +129,36 @@ export async function writeKitData(kitName: string, data: KitData): Promise<void
  * Update part of kit data
  * @param partialData Partial data object to merge with existing data
  */
-export async function updateKitData<T extends KitData>(partialData: Partial<T>): Promise<void> {
+export async function updateKitData<T extends BasicRecord & Omit<KitData<T>, 'name' | 'installedAt'>>(partialData: Partial<KitData<T>>): Promise<void> {
   const { activeKit } = await getReviliConfig()
-  const existingData = (await getKitData<T>() ?? {}) as (KitData & T)
+  const existingData = (await getKitData<T>() ?? {}) as KitData<T>
 
-  const newData: T = {
+  const newData: KitData<T> = {
     ...existingData,
     ...partialData,
     name: activeKit,
     installedAt: existingData?.installedAt ?? new Date().toISOString()
-  } as T
+  }
+
+  await writeKitData(activeKit, newData)
+}
+
+/**
+ * Update a single item in kit data
+ * @param key The key to update (cannot be 'name' or 'installedAt')
+ * @param value The new value
+ */
+export async function updateKitDataItem<
+  T extends BasicRecord,
+  K extends Exclude<keyof T, 'name' | 'installedAt'>
+>(key: K, value: T[K]): Promise<void> {
+  const { activeKit } = await getReviliConfig()
+  const existingData = (await getKitData<T>() ?? {}) as KitData<T>
+
+  const newData: KitData<T> = {
+    ...existingData,
+    [key]: value
+  }
 
   await writeKitData(activeKit, newData)
 }

@@ -36,42 +36,43 @@ title: Node API
   export default demoKit
   ```
 
-### KitOptions
-
-```ts
-interface KitOptions {
-  name: string
-  webFramework?: 'vue'
-  viteOptions?: UserConfig
-  registerService?: (server: ViteDevServer) => void
-  registerCommand: (params: {program: CAC; reviliConfig?: ReviliConfig}) => void
-}
-```
-
 ## getKitData
 
-- Type: `<T extends object>() => Promise<KitData & T>`
+- Type: `<T extends BasicRecord, K extends keyof KitData<T>>(prop?: K): Promise<KitData<T>[K] | null | KitData<T>>`
 - Description: Get current kit data.
 - Example:
   ```typescript
   import { getKitData } from '@revili/helpers/node'
 
-  const kitData = await getKitData()
+  // Get all data
+  const kitData = await getKitData<{ prop: string }>()
+  // Get specific data
+  const propOfKitData = await getKitData<{ prop: string }>('prop')
   ```
 
 ## updateKitData
 
-- Type: `<T extends object>(partialData: Partial<T>) => Promise<void>`
+- Type: `<T extends BasicRecord & Omit<KitData<T>, 'name' | 'installedAt'>>(partialData: Partial<KitData<T>>): Promise<void>`
 - Description: Updates kit data to update only the specified fields.
 - Example:
   ```typescript
   import { updateKitData } from '@revili/helpers/node'
 
-  await updateKitData({
+  await updateKitData<{ version: string; description: string }>({
     version: '1.0.1',
     description: 'The description has been updated!'
   })
   ```
+
+## updateKitDataItem
+
+- Type: `<T extends BasicRecord, K extends Exclude<keyof T, 'name' | 'installedAt'>(key: K, value: T[K]): Promise<void>`
+- Description: Updates kit data to update only the specified field.
+- Example:
+  ```typescript
+  import { updateKitDataItem } from '@revili/helpers/node'
+
+  await updateKitDataItem<{ version: string; description: string }>('version', '1.0.1')
 
 ## useServerSocket
 
@@ -97,3 +98,22 @@ interface KitOptions {
 
   export default demoKit
   ```
+
+## ts declaration
+
+```ts
+interface KitOptions {
+  name: string
+  webFramework?: 'vue'
+  viteOptions?: UserConfig
+  registerService?: (server: ViteDevServer) => void
+  registerCommand: (params: {program: CAC; reviliConfig?: ReviliConfig}) => void
+}
+
+type BasicRecord = Record<string | number | symbol, any>
+
+type KitData<T extends BasicRecord = BasicRecord> = {
+  version?: string
+  description?: string
+} & T
+```
