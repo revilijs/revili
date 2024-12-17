@@ -1,0 +1,1 @@
+import{_ as e,o as c,c as o}from"./app-DyKCri5g.js";const n="/logo.png",s={},t={class:"icon-reco-theme",src:n};function _(r,a){return c(),o("img",t)}const i=e(s,[["render",_],["__file","IconRecoTheme.vue"]]);export{i as default};
