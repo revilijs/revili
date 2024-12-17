@@ -1,5 +1,13 @@
 # @revili/revili-kit-default
 
+## 0.0.1-alpha.12
+
+### Patch Changes
+
+- Optimize node api
+- Updated dependencies
+  - revili@0.0.1-alpha.14
+
 ## 0.0.1-alpha.11
 
 ### Patch Changes

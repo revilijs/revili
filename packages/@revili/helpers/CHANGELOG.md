@@ -1,5 +1,11 @@
 # @revili/helpers
 
+## 0.0.1-alpha.12
+
+### Patch Changes
+
+- Optimize node api
+
 ## 0.0.1-alpha.11
 
 ### Patch Changes

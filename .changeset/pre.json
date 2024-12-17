@@ -2,15 +2,16 @@
   "mode": "exit",
   "tag": "alpha",
   "initialVersions": {
-    "@revili/helpers": "0.0.1-alpha.10",
-    "@revili/revili-kit-demo": "0.0.1-alpha.10",
-    "revili": "0.0.1-alpha.12"
+    "@revili/helpers": "0.0.1-alpha.11",
+    "@revili/revili-kit-demo": "0.0.1-alpha.11",
+    "revili": "0.0.1-alpha.13"
   },
   "changesets": [
     "cold-cooks-smoke",
     "forty-stingrays-nail",
     "funny-monkeys-cover",
     "green-kiwis-exist",
+    "green-pans-doubt",
     "kind-masks-jump",
     "large-dots-arrive",
     "lucky-donuts-agree",
